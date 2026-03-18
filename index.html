@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fact Network | Dubai Kariyer ve Eğitim Platformu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Renk Paleti ve Değişkenler  */
+        :root {
+            --primary-black: #000000;
+            --body-black: #111111;
+            --medium-gray: #3A3A3A;
+            --passive-gray: #707070;
+            --light-gray: #F2F2F2;
+            --pure-white: #FFFFFF;
+            --border-gray: #CCCCCC;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            /* [cite: 114] */
+            line-height: 1.6;
+            color: var(--body-black);
+            background-color: var(--pure-white);
+        }
+
+        /* Tipografi Hiyerarşisi [cite: 114] */
+        h1 {
+            font-size: 64px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        h2 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        h3 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 16px;
+            color: var(--medium-gray);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigasyon [cite: 44, 45] */
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-gray);
+            position: sticky;
+            top: 0;
+            background: var(--pure-white);
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary-black);
+            margin-left: 30px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* Hero Bölümü [cite: 56] */
+        .hero {
+            background-color: var(--primary-black);
+            /* [cite: 56] */
+            color: var(--pure-white);
+            padding: 120px 0;
+            text-align: left;
+        }
+
+        .hero h1 {
+            color: var(--pure-white);
+            max-width: 700px;
+        }
+
+        .hero p {
+            color: var(--passive-gray);
+            font-size: 20px;
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 15px;
+        }
+
+        .btn-primary {
+            background-color: var(--pure-white);
+            color: var(--primary-black);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--pure-white);
+            color: var(--pure-white);
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+
+        /* Platform Özeti & Kartlar [cite: 56] */
+        .section {
+            padding: 100px 0;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            padding: 40px;
+            background: var(--light-gray);
+            border: 1px solid transparent;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--primary-black);
+            background: var(--pure-white);
+        }
+
+        /* Dikeyler (Verticals) [cite: 56] */
+        .verticals {
+            background: var(--light-gray);
+        }
+
+        .vertical-card {
+            background: var(--pure-white);
+            padding: 50px;
+            text-align: center;
+            border: 1px solid var(--border-gray);
+        }
+
+        /* Nasıl Çalışır? (Horizontal Process) [cite: 56] */
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            position: relative;
+        }
+
+        .step {
+            text-align: center;
+            flex: 1;
+            padding: 0 20px;
+        }
+
+        .step-num {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-black);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-weight: bold;
+        }
+
+        /* WhatsApp Button [cite: 104] */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        /* Footer [cite: 56] */
+        footer {
+            background: var(--primary-black);
+            color: var(--pure-white);
+            padding: 60px 0;
+            font-size: 14px;
+        }
+
+        /* Responsive  */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 40px;
+            }
+
+            .steps {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Fact Network</div>
+                <div class="nav-links">
+                    <a href="#egitimler">Eğitimler</a>
+                    <a href="#hakkimizda">Hakkımızda</a>
+                    <a href="#iletisim">İletişim</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Dubai'de Kariyer.<br>Sistematik.</h1>
+            <p>Dubai'de kariyer, emlak ve hukuk alanlarına giriş yapmak isteyen profesyoneller için kurumsal bir
+                ekosistem. [cite: 26]</p>
+            <div class="cta-group">
+                <a href="#egitimler" class="btn btn-primary">Eğitimlerimizi İncele</a>
+                <a href="#egitmenler" class="btn btn-outline">Eğitmenlere Göz At</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="grid-4">
+                <div class="card">
+                    <h3>Eğitim</h3>
+                    <p>Alanında uzman isimlerden doğrulanabilir ve sistematik bilgi akışı. [cite: 56]</p>
+                </div>
+                <div class="card">
+                    <h3>Mentorluk</h3>
+                    <p>Dubai pazarında deneyimli isimlerle birebir gelişim fırsatı. [cite: 56]</p>
+                </div>
+                <div class="card">
+                    <h3>Partner Ağı</h3>
+                    <p>Ekosistemin bir parçası olarak yeni iş birliği kapılarını aralayın. [cite: 56]</p>
+                </div>
+                <div class="card">
+                    <h3>Ekosistem</h3>
+                    <p>Bilgiyi gelire dönüştüren sürekli büyüyen bir ağ yapısı. [cite: 56]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section verticals">
+        <div class="container">
+            <h2 style="text-align: center;">Uzmanlık Alanlarımız</h2>
+            <div class="grid-4" style="grid-template-columns: 1fr 1fr;">
+                <div class="vertical-card">
+                    <h3>Emlak (Real Estate)</h3>
+                    <p>Dubai emlak pazarında lisans sürecinden ilk satışa kadar tam rehberlik. [cite: 56, 87]</p>
+                    <br>
+                    <a href="#" class="btn btn-primary" style="background: black; color: white;">Kategoriyi İncele</a>
+                </div>
+                <div class="vertical-card">
+                    <h3>Hukuk (Legal)</h3>
+                    <p>Şirket kurulumu, sözleşme yönetimi ve Dubai hukuk sistemi temelleri. [cite: 56, 92]</p>
+                    <br>
+                    <a href="#" class="btn btn-primary" style="background: black; color: white;">Kategoriyi İncele</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 style="text-align: center;">Nasıl Çalışır?</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <h3>İzle</h3>
+                    <p>Eğitim içeriklerini tamamlayın.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <h3>Eğit</h3>
+                    <p>Mentorlukla yetkinlik kazanın.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <h3>İlerle</h3>
+                    <p>Piyasada yerinizi alın.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <h3>Sisteme Dahil Ol</h3>
+                    <p>Network'ün bir parçası olun. [cite: 56]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: #111; color: white; text-align: center;">
+        <div class="container">
+            <h2 style="color: white;">Sistemin Bir Parçası Ol</h2>
+            <p style="color: #707070; margin-bottom: 30px;">Dubai'deki geleceğinizi bugün planlamaya başlayın.</p>
+            <a href="#" class="btn btn-primary">Hemen Başvur</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+                <div class="logo">Fact Network</div>
+                <div>
+                    <p>&copy; 2024 Fact Network. Tüm hakları saklıdır. [cite: 14]</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/numaraniz" class="whatsapp-float" target="_blank">
+        WhatsApp Destek Hattı
+    </a>
+
+</body>
+
+</html>
