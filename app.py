@@ -4,7 +4,30 @@ import os
 app = Flask(__name__)
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
-# ... SERVICES ve INSTRUCTORS verileri aynı kalabilir ...
+# PDF'deki Hizmet ve Eğitim Verileri 
+SERVICES = [
+    {"title": "Dubai Emlak Eğitimi", "desc": "Piyasa yapısı, RERA lisansı ve Komisyon sistemi. [cite: 37, 38]", "tag": "Emlak"},
+    {"title": "Hukuk & Şirket Kurulum", "desc": "Mainland/Free Zone yapıları ve sözleşme yönetimi. [cite: 39, 40]", "tag": "Hukuk"},
+    {"title": "Kariyer Mentorluk", "desc": "Profil analizi ve Dubai iş ağına giriş stratejileri. [cite: 41, 42]", "tag": "Kariyer"},
+    {"title": "Sertifika Programları", "desc": "Tamamlama belgesiyle profilini güçlendir. [cite: 44, 45]", "tag": "Eğitim"},
+    {"title": "Ekosistem Üyeliği", "desc": "Kapalı topluluk ve komisyon hesabına erişim. [cite: 47, 48]", "tag": "Network"},
+    {"title": "Ücretsiz Webinar", "desc": "Canlı oturumlarla Dubai'den haberler. [cite: 49, 50]", "tag": "Canlı"}
+]
+
+# Dinamik Eğitmen Verisi (Gelecekte genişletilebilir)
+INSTRUCTORS = [
+    {
+        "name": "Ahmet Yılmaz",
+        "title": "Senior Broker",
+        "level": "K5",
+        "category": "Emlak",
+        "intro": "Dubai premium segmentinde, lüks konut satışı ve yatırımcı yönetimi uzmanı.",
+        "courses": [
+            {"title": "Dubai'de Gayrimenkul Yatırımı", "price": "1.250 AED", "type": "Video Kurs", "link": "#"},
+            {"title": "Lüks Konut Portföy Yönetimi", "price": "2.500 AED", "type": "Mentorluk", "link": "#"}
+        ]
+    }
+]
 
 @app.route('/')
 def home():
