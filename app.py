@@ -4,34 +4,46 @@ import os
 app = Flask(__name__)
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
-# PDF'deki Hizmetler ve Eğitim Verileri [cite: 37-48]
+# PDF'deki Hizmet ve Eğitim Verileri 
 SERVICES = [
+    {"title": "Dubai Emlak Eğitimi", "desc": "Piyasa yapısı, RERA lisansı ve Komisyon sistemi. [cite: 37, 38]", "tag": "Emlak"},
+    {"title": "Hukuk & Şirket Kurulum", "desc": "Mainland/Free Zone yapıları ve sözleşme yönetimi. [cite: 39, 40]", "tag": "Hukuk"},
+    {"title": "Kariyer Mentorluk", "desc": "Profil analizi ve Dubai iş ağına giriş stratejileri. [cite: 41, 42]", "tag": "Kariyer"},
+    {"title": "Sertifika Programları", "desc": "Tamamlama belgesiyle profilini güçlendir. [cite: 44, 45]", "tag": "Eğitim"},
+    {"title": "Ekosistem Üyeliği", "desc": "Kapalı topluluk ve komisyon hesabına erişim. [cite: 47, 48]", "tag": "Network"},
+    {"title": "Ücretsiz Webinar", "desc": "Canlı oturumlarla Dubai'den haberler. [cite: 49, 50]", "tag": "Canlı"}
+]
+
+# Dinamik Eğitmen Verisi (Gelecekte genişletilebilir)
+INSTRUCTORS = [
     {
-        "title": "Dubai Emlak Eğitimi",
-        "desc": "Piyasa yapısı, RERA lisansı ve Komisyon sistemi.",
-        "tag": "Emlak"
-    },
-    {
-        "title": "Hukuk & Şirket Kurulum",
-        "desc": "Mainland/Free Zone yapıları ve sözleşme yönetimi.",
-        "tag": "Hukuk"
-    },
-    {
-        "title": "Kariyer Mentorluk",
-        "desc": "Profil analizi ve Dubai iş ağına giriş stratejileri.",
-        "tag": "Kariyer"
+        "name": "Ahmet Yılmaz",
+        "title": "Senior Broker",
+        "level": "K5",
+        "category": "Emlak",
+        "intro": "Dubai premium segmentinde, lüks konut satışı ve yatırımcı yönetimi uzmanı.",
+        "courses": [
+            {"title": "Dubai'de Gayrimenkul Yatırımı", "price": "1.250 AED", "type": "Video Kurs", "link": "#"},
+            {"title": "Lüks Konut Portföy Yönetimi", "price": "2.500 AED", "type": "Mentorluk", "link": "#"}
+        ]
     }
 ]
 
 @app.route('/')
 def home():
-    # index.html artık 'templates/' içinde olduğu için render_template kullanılır
+    # index.html dosyasını templates klasöründen render eder
     return render_template('index.html', services=SERVICES)
 
 @app.route('/egitmenler')
 def egitmenler():
-    # Bir sonraki adımda yapacağımız sayfa
-    return render_template('egitmenler.html')
+    # Eğitmenler sayfası için rota
+    return render_template('egitmenler.html', instructors=INSTRUCTORS)
+
+# Favicon 404 hatasını önlemek için rota
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 @app.route('/<path:path>')
 def static_proxy(path):
