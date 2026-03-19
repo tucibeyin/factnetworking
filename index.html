@@ -319,19 +319,20 @@
             <h2 style="text-align: center; margin-bottom: 20px;">Bir adım kaldı. [cite: 96]</h2>
             <p style="text-align: center; margin-bottom: 40px; font-size: 14px; color: var(--passive-gray);">Formunu
                 doldur, 48 saat içinde dönelim. Her başvuru değerlendirilir, her başvuru kabul edilmez. [cite: 97]</p>
-            <form style="display: flex; flex-direction: column; gap: 15px;">
-                <input type="text" placeholder="Adınız Soyadınız"
-                    style="padding: 15px; border: 1px solid var(--border-gray);">
-                <input type="email" placeholder="E-posta Adresiniz"
-                    style="padding: 15px; border: 1px solid var(--border-gray);">
-                <input type="tel" placeholder="Telefon (WhatsApp)"
-                    style="padding: 15px; border: 1px solid var(--border-gray);">
-                <select style="padding: 15px; border: 1px solid var(--border-gray);">
-                    <option>İlgi alanı: Emlak / Hukuk / Kariyer [cite: 101]</option>
+            <form action="/basvuru" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+                <input type="text" name="fullname" placeholder="Adınız Soyadınız"
+                    style="padding: 15px; border: 1px solid var(--border-gray);" required>
+                <input type="email" name="email" placeholder="E-posta Adresiniz"
+                    style="padding: 15px; border: 1px solid var(--border-gray);" required>
+                <input type="tel" name="phone" placeholder="Telefon (WhatsApp)"
+                    style="padding: 15px; border: 1px solid var(--border-gray);" required>
+                <select name="interest" style="padding: 15px; border: 1px solid var(--border-gray);">
+                    <option value="Emlak">Emlak</option>
+                    <option value="Hukuk">Hukuk</option>
+                    <option value="Kariyer">Kariyer</option>
                 </select>
                 <button type="submit"
-                    style="padding: 18px; background: #000; color: #fff; font-weight: 700; border: none; cursor: pointer; margin-top: 10px;">Gönder
-                    [cite: 102]</button>
+                    style="padding: 18px; background: #000; color: #fff; font-weight: 700; border: none; cursor: pointer;">Gönder</button>
             </form>
         </div>
     </section>

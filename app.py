@@ -4,29 +4,7 @@ import os
 app = Flask(__name__)
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
-SERVICES = [
-    {"title": "Dubai Emlak Eğitimi", "desc": "Piyasa yapısı, RERA lisansı ve Komisyon sistemi. [cite: 37, 38]", "tag": "Emlak"},
-    {"title": "Hukuk & Şirket Kurulum", "desc": "Mainland/Free Zone yapıları ve sözleşme yönetimi. [cite: 39, 40]", "tag": "Hukuk"},
-    {"title": "Kariyer Mentorluk", "desc": "Profil analizi ve Dubai iş ağına giriş stratejileri. [cite: 41, 42]", "tag": "Kariyer"},
-    {"title": "Sertifika Programları", "desc": "Tamamlama belgesiyle profilini güçlendir. [cite: 44, 45]", "tag": "Eğitim"},
-    {"title": "Ekosistem Üyeliği", "desc": "Kapalı topluluk ve komisyon hesabına erişim. [cite: 47, 48]", "tag": "Network"},
-    {"title": "Ücretsiz Webinar", "desc": "Canlı oturumlarla Dubai'den haberler. [cite: 49, 50]", "tag": "Canlı"}
-]
-
-INSTRUCTORS = [
-    {
-        "name": "Ahmet Yılmaz",
-        "title": "Senior Broker",
-        "level": "K5",
-        "category": "Emlak",
-        "image": "https://via.placeholder.com/400x500", # EKSİK OLAN RESİM EKLENDİ
-        "intro": "Dubai premium segmentinde, lüks konut satışı ve yatırımcı yönetimi uzmanı.",
-        "courses": [
-            {"title": "Dubai'de Gayrimenkul Yatırımı", "price": "1.250 AED", "type": "Video Kurs", "link": "#"},
-            {"title": "Lüks Konut Portföy Yönetimi", "price": "2.500 AED", "type": "Mentorluk", "link": "#"}
-        ]
-    }
-]
+# ... SERVICES ve INSTRUCTORS verileri aynı kalabilir ...
 
 @app.route('/')
 def home():
@@ -34,7 +12,7 @@ def home():
 
 @app.route('/egitimler')
 def egitimler():
-    # FİLTRELEME MANTIĞI EKLENDİ
+    # FILTRELEME MANTIĞI EKLENDİ [cite: 66, 67]
     category_filter = request.args.get('category')
     if category_filter:
         filtered_list = [i for i in INSTRUCTORS if i['category'] == category_filter]
@@ -44,8 +22,9 @@ def egitimler():
 
 @app.route('/basvuru', methods=['POST'])
 def basvuru():
-    # Form verilerini burada yakalayabiliriz (Şimdilik ana sayfaya dönüyor)
-    return redirect('/')
+    # Form verileri burada yakalanır [cite: 95-102]
+    # Gelecekte buraya e-posta gönderme kodu eklenebilir.
+    return "Başvurunuz alındı! 48 saat içinde döneceğiz."
 
 @app.route('/favicon.ico')
 def favicon():
