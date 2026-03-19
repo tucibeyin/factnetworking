@@ -176,55 +176,92 @@
             z-index: 1000;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
-        .hero-steps {
+        .stats-bar {
+            background: #000;
+            color: #fff;
+            padding: 40px 0;
+            border-top: 1px solid #333;
+        }
+
+        .process-section {
+            padding: 100px 0;
+            background: #fff;
+            text-align: center;
+        }
+
+        .process-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin: 40px 0;
-            max-width: 500px;
+            gap: 40px;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .step-item {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 12px;
-            font-size: 16px;
-            font-weight: 500;
+            gap: 10px;
         }
 
         .step-number {
+            font-size: 12px;
             font-weight: 800;
             color: var(--passive-gray);
-            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .hero-ctas {
+        .step-text {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .process-ctas {
+            margin: 60px 0;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 24px;
-            margin-top: 40px;
+            gap: 20px;
         }
 
         .btn-examine {
-            background: #fff;
-            color: #000;
-            padding: 12px 28px;
+            background: #000;
+            color: #fff;
+            padding: 20px 40px;
             text-decoration: none;
             font-weight: 700;
+            font-size: 18px;
             border-radius: 4px;
-            transition: 0.3s;
+            display: inline-block;
         }
 
-        .btn-examine:hover {
-            background: var(--border-gray);
-        }
-
-        .link-webinar {
-            color: #fff;
+        .btn-webinar {
+            color: #000;
             text-decoration: none;
             font-weight: 600;
-            font-size: 15px;
-            border-bottom: 1px solid rgba(255,255,255,0.3);
+            border-bottom: 2px solid #000;
+            padding-bottom: 4px;
+        }
+
+        .about-stats {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .about-stat-box {
+            background: #f4f4f4;
+            padding: 20px 30px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .about-stat-box span {
+            display: block;
+            font-size: 24px;
+            font-weight: 700;
         }
     </style>
 </head>
@@ -254,22 +291,13 @@
                 style="color: var(--passive-gray); margin-bottom: 20px; font-weight: 600; letter-spacing: 2px; font-size: 12px;">
                 DURAL CAREER EDUCATION PLATFORM [cite: 5]</p>
             <h1>Dubai'de<br>Kariyer Kurmak<br>İsteyenler. [cite: 6]</h1>
-            <p style="max-width: 600px; color: var(--passive-gray); font-size: 18px; margin-bottom: 20px;">Bilginizi
-                sisteme taşıyın. Sistemi gelirinize dönüştürün. [cite: 65]</p>
-            
-            <div class="hero-steps">
-                <div class="step-item"><span class="step-number">01</span> Eğitimi seç</div>
-                <div class="step-item"><span class="step-number">02</span> Mentorluk al</div>
-                <div class="step-item"><span class="step-number">03</span> Ağa dahil ol</div>
-                <div class="step-item"><span class="step-number">04</span> Gelir üret</div>
-            </div>
+            <p style="max-width: 600px; color: var(--passive-gray); font-size: 18px;">Kazandığının tamamı sende kalır. Tek satışta ciddi komisyon. Dünyanın her yerinden müşteriye ulaş.</p>
+        </div>
+    </section>
 
-            <div class="hero-ctas">
-                <a href="/egitimler" class="btn-examine">Eğitimleri İncele →</a>
-                <a href="#" class="link-webinar">Ücretsiz Webinar</a>
-            </div>
-
-            <div class="stats-grid">
+    <div class="stats-bar">
+        <div class="container">
+            <div class="stats-grid" style="border-top: none; margin-top: 0; padding-top: 0;">
                 <div class="stat-item">
                     <h4>$120B [cite: 11]</h4>
                     <p>DUBAI EMLAK HACMİ</p>
@@ -288,11 +316,44 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <section class="process-section">
+        <div class="container">
+            <h2 style="font-size: 42px; margin-bottom: 60px;">Bilgini sisteme dönüştür.</h2>
+            
+            <div class="process-grid">
+                <div class="step-item">
+                    <span class="step-number">01</span>
+                    <span class="step-text">Eğitimi seç</span>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">02</span>
+                    <span class="step-text">Mentorluk al</span>
+                </div>
+            </div>
+
+            <div class="process-ctas">
+                <a href="/egitimler" class="btn-examine">Eğitimleri İncele →</a>
+                <a href="#" class="btn-webinar">Ücretsiz Webinar</a>
+            </div>
+
+            <div class="process-grid">
+                <div class="step-item">
+                    <span class="step-number">03</span>
+                    <span class="step-text">Ağa dahil ol</span>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">04</span>
+                    <span class="step-text">Gelir üret</span>
+                </div>
+            </div>
+        </div>
     </section>
 
     <section class="section" id="hizmetler">
         <div class="container">
-            <h2 style="font-size: 36px; margin-bottom: 10px;">Hizmetlerimiz [cite: 31]</h2>
+            <h2 style="font-size: 36px; margin-bottom: 10px;">Her şey bir arada.</h2>
             <p style="color: var(--passive-gray); margin-bottom: 50px;">Dubai'de kariyer kurmak için ihtiyacın olan tüm
                 hizmetler tek platformda. [cite: 33]</p>
             <div class="grid-3">
@@ -342,17 +403,23 @@
     <section class="section" id="hakkimizda">
         <div class="container" style="max-width: 900px; text-align: center;">
             <h2 style="font-size: 48px; margin-bottom: 30px;">Dubai'de bir sistemi biz kurduk. [cite: 63]</h2>
-            <p style="font-size: 18px; margin-bottom: 40px;">Fact Network, Dubai kariyer, emlak ve hukuk talebini tek
+            <p style="font-size: 18px; margin-bottom: 60px;">Fact Network, Dubai kariyer, emlak ve hukuk talebini tek
                 bir güvenilir marka altında toplayan, bilgiyi gelire dönüştüren eğitim platformudur. [cite: 64]</p>
+            
+            <div class="about-stats">
+                <div class="about-stat-box"><span>2</span> YIL</div>
+                <div class="about-stat-box"><span>4</span> SEKTÖR</div>
+                <div class="about-stat-box"><span>60</span> PARTNER</div>
+                <div class="about-stat-box"><span>3X</span> BÜYÜME</div>
+            </div>
+
             <div style="text-align: left; background: #000; color: #fff; padding: 40px; border-radius: 4px;">
                 <p style="color: #fff; margin-bottom: 20px; font-weight: 700;">Değerlerimiz:</p>
                 <ul style="list-style: none;">
-                    <li style="margin-bottom: 12px; font-size: 14px;">• Kalite standartlarından taviz vermeyiz. [cite:
-                        70]</li>
-                    <li style="margin-bottom: 12px; font-size: 14px;">• Seçici çalışırız, her başvuruyu kabul etmeyiz.
-                        [cite: 71]</li>
-                    <li style="margin-bottom: 12px; font-size: 14px;">• UAE regülasyonlarına tam uyum sağlarız. [cite:
-                        72]</li>
+                    <li style="margin-bottom: 12px; font-size: 14px;">• Kalite standartlarından taviz vermeyiz.</li>
+                    <li style="margin-bottom: 12px; font-size: 14px;">• Seçici çalışırız — her başvuruyu kabul etmeyiz.</li>
+                    <li style="margin-bottom: 12px; font-size: 14px;">• UAE regülasyonlarına tam uyum sağlarız.</li>
+                    <li style="margin-bottom: 12px; font-size: 14px;">• Şeffaf, ölçülebilir, sürdürülebilir model.</li>
                 </ul>
             </div>
         </div>
