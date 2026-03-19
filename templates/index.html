@@ -4,15 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fact Network | Dubai'de Kariyer Kurmak İsteyenler</title>
-    <meta name="description" content="Dubai emlak, hukuk ve kariyer alanında ihtiyacın olan her şey tek platformda.">
+    <title>Fact Network | Dubai'de Kariyer. Sistematik.</title>
+    <meta name="description"
+        content="Dubai emlak, hukuk ve kariyer alanında ihtiyacın olan her şey tek platformda. Doğru eğitim, doğru ağ, doğru başlangıç.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Tasarım Rehberi Renk Paleti  */
         :root {
             --primary-black: #000000;
-            --body-black: #111111;
+            --body-text: #1A1A1A;
             --medium-gray: #3A3A3A;
             --passive-gray: #707070;
+            --light-gray: #F2F2F2;
             --pure-white: #FFFFFF;
             --border-gray: #CCCCCC;
         }
@@ -25,7 +28,8 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            color: var(--body-black);
+            color: var(--body-text);
+            background-color: var(--pure-white);
             line-height: 1.6;
         }
 
@@ -35,7 +39,7 @@
             padding: 0 24px;
         }
 
-        /* Header [cite: 3, 4] */
+        /* Header & Nav [cite: 4, 181, 193] */
         header {
             padding: 24px 0;
             border-bottom: 1px solid var(--border-gray);
@@ -49,6 +53,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 26px;
+            letter-spacing: -1.5px;
         }
 
         .nav-links a {
@@ -66,55 +76,111 @@
             font-weight: 700;
         }
 
-        /* Hero [cite: 5-17] */
+        /* Hero Section [cite: 6-17, 193] */
         .hero {
             background: var(--primary-black);
             color: #fff;
             padding: 120px 0;
         }
 
+        .hero-tag {
+            color: var(--passive-gray);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
         .hero h1 {
-            font-size: 64px;
+            font-size: 72px;
             font-weight: 700;
             line-height: 1.1;
             margin-bottom: 24px;
+        }
+
+        .hero p {
+            max-width: 600px;
+            color: var(--passive-gray);
+            font-size: 18px;
+            margin-bottom: 48px;
+        }
+
+        /* Stats Bar  */
+        .stats-bar {
+            background: #000;
+            color: #fff;
+            padding: 40px 0;
+            border-top: 1px solid #1A1A1A;
         }
 
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 30px;
-            margin-top: 60px;
-            border-top: 1px solid #333;
-            padding-top: 40px;
         }
 
         .stat-item h4 {
             font-size: 36px;
-            margin-bottom: 5px;
             font-weight: 700;
+            margin-bottom: 4px;
         }
 
         .stat-item p {
-            color: var(--passive-gray);
             font-size: 11px;
             text-transform: uppercase;
+            color: var(--passive-gray);
             letter-spacing: 1px;
         }
 
-        /* Sections */
+        /* Process Section (How it Works) [cite: 19, 193] */
+        .process-section {
+            padding: 120px 0;
+            text-align: center;
+            background: #fff;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 60px auto;
+        }
+
+        .step-item {
+            padding: 40px 20px;
+            background: var(--light-gray);
+            border-radius: 4px;
+        }
+
+        .step-num {
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--passive-gray);
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .step-text {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--primary-black);
+        }
+
+        /* Cards & Services [cite: 32-51, 193] */
         .section {
-            padding: 100px 0;
+            padding: 120px 0;
         }
 
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 32px;
         }
 
         .card {
-            padding: 40px;
+            padding: 48px;
             border: 1px solid var(--border-gray);
             transition: 0.3s;
         }
@@ -123,152 +189,121 @@
             border-color: var(--primary-black);
         }
 
-        /* Hedef Kitle  */
-        .audience-section {
-            background: #f9f9f9;
-        }
-
-        .audience-card {
-            background: #fff;
-            padding: 30px;
-            border: 1px solid var(--border-gray);
-        }
-
-        /* Bülten  */
-        .blog-card {
-            border-bottom: 1px solid var(--border-gray);
-            padding: 24px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .blog-card a {
-            color: var(--primary-black);
-            font-weight: 700;
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        /* Footer [cite: 121-136] */
-        footer {
-            background: var(--primary-black);
-            color: #fff;
-            padding: 80px 0;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 50px;
-        }
-
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #25D366;
-            color: #fff;
-            padding: 15px 25px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-        .stats-bar {
-            background: #000;
-            color: #fff;
-            padding: 40px 0;
-            border-top: 1px solid #333;
-        }
-
-        .process-section {
-            padding: 100px 0;
-            background: #fff;
-            text-align: center;
-        }
-
-        .process-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .step-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .step-number {
-            font-size: 12px;
-            font-weight: 800;
-            color: var(--passive-gray);
+        .card small {
             text-transform: uppercase;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--passive-gray);
             letter-spacing: 1px;
         }
 
-        .step-text {
-            font-size: 20px;
-            font-weight: 600;
+        .card h3 {
+            font-size: 24px;
+            margin: 16px 0;
         }
 
-        .process-ctas {
-            margin: 60px 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .btn-examine {
-            background: #000;
-            color: #fff;
-            padding: 22px 50px;
-            text-decoration: none;
-            font-weight: 800;
-            font-size: 20px;
-            border-radius: 4px;
-            display: inline-block;
-            transition: transform 0.3s, background 0.3s;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        .btn-examine:hover {
-            transform: translateY(-3px);
-            background: #333;
-        }
-
-        .btn-webinar {
-            color: #000;
-            text-decoration: none;
-            font-weight: 600;
-            border-bottom: 2px solid #000;
-            padding-bottom: 4px;
+        /* Audience & About Stats [cite: 52-74] */
+        .audience-section {
+            background: var(--light-gray);
         }
 
         .about-stats {
             display: flex;
             gap: 40px;
             justify-content: center;
-            margin-bottom: 30px;
+            margin: 48px 0;
         }
 
         .about-stat-box {
-            background: #f4f4f4;
-            padding: 20px 30px;
-            border-radius: 4px;
+            background: var(--light-gray);
+            padding: 24px 40px;
             text-align: center;
+            flex: 1;
         }
 
         .about-stat-box span {
             display: block;
-            font-size: 24px;
+            font-size: 32px;
             font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        /* Form Styling [cite: 96-103] */
+        .apply-section {
+            background: #f4f4f4;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 16px;
+            border: 1px solid var(--border-gray);
+            font-family: inherit;
+            font-size: 15px;
+            margin-bottom: 16px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 20px;
+            background: #000;
+            color: #fff;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        /* Footer [cite: 122-137] */
+        footer {
+            background: var(--primary-black);
+            color: #fff;
+            padding: 80px 0;
+            font-size: 14px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 64px;
+        }
+
+        .footer-links a {
+            display: block;
+            color: var(--passive-gray);
+            text-decoration: none;
+            margin-bottom: 12px;
+        }
+
+        /* WhatsApp [cite: 117, 241] */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background: #25D366;
+            color: #fff;
+            padding: 16px 32px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -278,14 +313,13 @@
     <header>
         <div class="container">
             <nav>
-                <div style="font-weight: 800; font-size: 26px; letter-spacing: -1.5px;">Fact.</div>
+                <div class="logo">Fact.</div>
                 <div class="nav-links">
                     <a href="/egitimler">Eğitimler</a>
                     <a href="#hizmetler">Hizmetlerimiz</a>
                     <a href="#hakkimizda">Hakkımızda</a>
                     <a href="#bulten">Bülten</a>
-                    <a href="#iletisim">İletişim</a>
-                    <a href="/login" style="margin-left: 20px; opacity: 0.7;">Giriş Yap</a>
+                    <a href="/login" style="opacity: 0.6;">Giriş Yap</a>
                     <a href="#basvur" class="btn-start">Başla →</a>
                 </div>
             </nav>
@@ -294,32 +328,30 @@
 
     <section class="hero">
         <div class="container">
-            <p
-                style="color: var(--passive-gray); margin-bottom: 20px; font-weight: 600; letter-spacing: 2px; font-size: 12px;">
-                DURAL CAREER EDUCATION PLATFORM [cite: 5]</p>
-            <h1>Dubai'de<br>Kariyer Kurmak<br>İsteyenler. [cite: 6]</h1>
-            <p style="max-width: 600px; color: var(--passive-gray); font-size: 18px;">Kazandığının tamamı sende kalır. Tek satışta ciddi komisyon. Dünyanın her yerinden müşteriye ulaş.</p>
+            <p class="hero-tag">Dubai Career Education Platform</p>
+            <h1>Dubai'de Kariyer.<br>Sistematik.</h1>
+            <p>Kazandığının tamamı sende kalır. Tek satışta ciddi komisyon. Dünyanın her yerinden müşteriye ulaş.</p>
         </div>
     </section>
 
     <div class="stats-bar">
         <div class="container">
-            <div class="stats-grid" style="border-top: none; margin-top: 0; padding-top: 0;">
+            <div class="stats-grid">
                 <div class="stat-item">
-                    <h4>$120B [cite: 11]</h4>
-                    <p>DUBAI EMLAK HACMİ</p>
+                    <h4>$120B</h4>
+                    <p>Dubai Emlak Hacmi</p>
                 </div>
                 <div class="stat-item">
-                    <h4>%0 [cite: 12]</h4>
-                    <p>GELİR VERGİSİ</p>
+                    <h4>%0</h4>
+                    <p>Gelir Vergisi</p>
                 </div>
                 <div class="stat-item">
-                    <h4>200K+ [cite: 13]</h4>
-                    <p>AKTİF PROFESYONEL</p>
+                    <h4>200K+</h4>
+                    <p>Aktif Profesyonel</p>
                 </div>
                 <div class="stat-item">
-                    <h4>3X [cite: 14]</h4>
-                    <p>GELİR ARTIŞ POTANSİYELİ</p>
+                    <h4>3X</h4>
+                    <p>Gelir Artış Potansiyeli</p>
                 </div>
             </div>
         </div>
@@ -327,50 +359,31 @@
 
     <section class="process-section">
         <div class="container">
-            <h2 style="font-size: 42px; margin-bottom: 60px;">Bilgini sisteme dönüştür.</h2>
-            
+            <h2>Bilgini sisteme dönüştür.</h2>
             <div class="process-grid">
-                <div class="step-item">
-                    <span class="step-number">01</span>
-                    <span class="step-text">Eğitimi seç</span>
-                </div>
-                <div class="step-item">
-                    <span class="step-number">02</span>
-                    <span class="step-text">Mentorluk al</span>
+                <div class="step-item"><span class="step-num">01</span><span class="step-text">İzle</span></div>
+                <div class="step-item"><span class="step-num">02</span><span class="step-text">Eğit</span></div>
+                <div class="step-item"><span class="step-num">03</span><span class="step-text">İlerle</span></div>
+                <div class="step-item"><span class="step-num">04</span><span class="step-text">Sisteme Dahil Ol</span>
                 </div>
             </div>
-
-            <div class="process-ctas">
-                <a href="/egitimler" class="btn-examine">Eğitimleri İncele →</a>
-                <a href="#" class="btn-webinar">Ücretsiz Webinar</a>
-            </div>
-
-            <div class="process-grid">
-                <div class="step-item">
-                    <span class="step-number">03</span>
-                    <span class="step-text">Ağa dahil ol</span>
-                </div>
-                <div class="step-item">
-                    <span class="step-number">04</span>
-                    <span class="step-text">Gelir üret</span>
-                </div>
+            <div style="margin-top: 40px;">
+                <a href="/egitimler"
+                    style="text-decoration:none; color:#000; font-weight:800; border-bottom:2px solid #000; padding-bottom:5px;">Eğitimleri
+                    İncele →</a>
             </div>
         </div>
     </section>
 
     <section class="section" id="hizmetler">
         <div class="container">
-            <h2 style="font-size: 36px; margin-bottom: 10px;">Her şey bir arada.</h2>
-            <p style="color: var(--passive-gray); margin-bottom: 50px;">Dubai'de kariyer kurmak için ihtiyacın olan tüm
-                hizmetler tek platformda. [cite: 33]</p>
+            <h2 style="font-size:36px; margin-bottom:48px;">Her şey bir arada.</h2>
             <div class="grid-3">
                 {% for service in services %}
                 <div class="card">
-                    <small
-                        style="color: var(--passive-gray); font-weight: 700; text-transform: uppercase; font-size: 10px; letter-spacing: 1px;">{{
-                        service.tag }}</small>
-                    <h3 style="margin: 15px 0; font-size: 22px;">{{ service.title }}</h3>
-                    <p style="font-size: 15px;">{{ service.desc }}</p>
+                    <small>{{ service.tag }}</small>
+                    <h3>{{ service.title }}</h3>
+                    <p>{{ service.desc }}</p>
                 </div>
                 {% endfor %}
             </div>
@@ -379,155 +392,111 @@
 
     <section class="section audience-section">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 50px; font-size: 36px;">Bu platform seni bekliyor. [cite: 52]
-            </h2>
+            <h2 style="text-align: center; margin-bottom: 60px;">Bu platform seni bekliyor.</h2>
             <div class="grid-3">
-                <div class="audience-card">
-                    <span style="font-size: 11px; font-weight: 700; color: var(--passive-gray);">BİRİNCİL [cite:
-                        53]</span>
-                    <h3 style="margin: 10px 0;">Kariyer Arayanlar [cite: 54]</h3>
-                    <p style="font-size: 14px;">22-40 yaş, girişimci ruhlu, Dubai'de yüksek gelirli kariyer peşinde
-                        olanlar. [cite: 55]</p>
+                <div class="card" style="background:#fff">
+                    <small>BİRİNCİ</small>
+                    <h3>Kariyer Arayanlar</h3>
+                    <p>22-40 yaş, girişimci ruhlu, Dubai'de yüksek gelirli kariyer peşinde olanlar.</p>
                 </div>
-                <div class="audience-card">
-                    <span style="font-size: 11px; font-weight: 700; color: var(--passive-gray);">İKİNCİL [cite:
-                        56]</span>
-                    <h3 style="margin: 10px 0;">Sektör Profesyonelleri [cite: 57]</h3>
-                    <p style="font-size: 14px;">Türkiye'de ağı olan emlakçılar, yatırım danışmanları ve hukuk
-                        profesyonelleri. [cite: 58]</p>
+                <div class="card" style="background:#fff">
+                    <small>İKİNCİL</small>
+                    <h3>Sektör Profesyonelleri</h3>
+                    <p>Türkiye'de ağı olan emlakçılar, yatırım danışmanları ve hukuk profesyonelleri.</p>
                 </div>
-                <div class="audience-card">
-                    <span style="font-size: 11px; font-weight: 700; color: var(--passive-gray);">ÜÇÜNCÜL [cite:
-                        59]</span>
-                    <h3 style="margin: 10px 0;">Yatırımcılar [cite: 60]</h3>
-                    <p style="font-size: 14px;">Dubai'ye taşınmadan şirket kurmak veya yatırım yapmak isteyenler. [cite:
-                        61]</p>
+                <div class="card" style="background:#fff">
+                    <small>ÜÇÜNCÜL</small>
+                    <h3>Yatırımcılar</h3>
+                    <p>Dubai'ye taşınmadan şirket kurmak veya yatırım yapmak isteyenler.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <section class="section" id="hakkimizda">
-        <div class="container" style="max-width: 900px; text-align: center;">
-            <h2 style="font-size: 48px; margin-bottom: 30px;">Dubai'de bir sistemi biz kurduk. [cite: 63]</h2>
-            <p style="font-size: 18px; margin-bottom: 60px;">Fact Network, Dubai kariyer, emlak ve hukuk talebini tek
-                bir güvenilir marka altında toplayan, bilgiyi gelire dönüştüren eğitim platformudur. [cite: 64]</p>
-            
-            <div class="about-stats">
-                <div class="about-stat-box"><span>2</span> YIL</div>
-                <div class="about-stat-box"><span>4</span> SEKTÖR</div>
-                <div class="about-stat-box"><span>60</span> PARTNER</div>
-                <div class="about-stat-box"><span>3X</span> BÜYÜME</div>
-            </div>
-
-            <div style="text-align: left; background: #000; color: #fff; padding: 40px; border-radius: 4px;">
-                <p style="color: #fff; margin-bottom: 20px; font-weight: 700;">Değerlerimiz:</p>
-                <ul style="list-style: none;">
-                    <li style="margin-bottom: 12px; font-size: 14px;">• Kalite standartlarından taviz vermeyiz.</li>
-                    <li style="margin-bottom: 12px; font-size: 14px;">• Seçici çalışırız — her başvuruyu kabul etmeyiz.</li>
-                    <li style="margin-bottom: 12px; font-size: 14px;">• UAE regülasyonlarına tam uyum sağlarız.</li>
-                    <li style="margin-bottom: 12px; font-size: 14px;">• Şeffaf, ölçülebilir, sürdürülebilir model.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="bulten">
         <div class="container">
-            <h2 style="margin-bottom: 40px;">Dubai'yi anlatan yazılar. [cite: 75]</h2>
-            <div>
-                <div class="blog-card">
-                    <h4>Dubai'de Broker Olmak: RERA Lisansı ve İlk 90 Gün [cite: 84]</h4>
-                    <a href="#">Devamını Oku → [cite: 86]</a>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <h2 style="font-size:48px; margin-bottom:32px;">Dubai'de bir sistemi biz kurduk.</h2>
+                <p style="font-size:18px;">Fact Network, Dubai kariyer, emlak ve hukuk talebini tek güvenilir marka
+                    altında toplayan, bilgiyi gelire dönüştüren eğitim platformudur.</p>
+
+                <div class="about-stats">
+                    <div class="about-stat-box"><span>2</span> ANA BİREY</div>
+                    <div class="about-stat-box"><span>4</span> GELİŞİM KATMANI</div>
+                    <div class="about-stat-box"><span>60+</span> ULUSLARARASI PARTNER</div>
                 </div>
-                <div class="blog-card">
-                    <h4>Türkiye'den Dubai'ye: Taşınma Öncesi 7 Şey [cite: 88]</h4>
-                    <a href="#">Devamını Oku → [cite: 90]</a>
-                </div>
-                <div class="blog-card">
-                    <h4>Free Zone mu, Mainland mi? Doğru Karar [cite: 92]</h4>
-                    <a href="#">Devamını Oku → [cite: 94]</a>
+
+                <div
+                    style="text-align:left; background:#000; color:#fff; padding:48px; border-radius:4px; margin-top:40px;">
+                    <h3 style="color:#fff; margin-bottom:24px;">Değerlerimiz [cite: 174]</h3>
+                    <ul style="list-style:none;">
+                        <li style="margin-bottom:12px;">• Kalite standartlarından taviz vermeyiz.</li>
+                        <li style="margin-bottom:12px;">• Seçici çalışırız — her başvuruyu kabul etmeyiz.</li>
+                        <li style="margin-bottom:12px;">• UAE regülasyonlarına tam uyum sağlarız.</li>
+                        <li style="margin-bottom:12px;">• Şeffaf, ölçülebilir ve sürdürülebilir model.</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section" id="basvur" style="background: #f4f4f4;">
-        <div class="container" style="max-width: 600px;">
-            <h2 style="text-align: center; margin-bottom: 20px;">Bir adım kaldı. [cite: 96]</h2>
-            <p style="text-align: center; margin-bottom: 40px; font-size: 14px; color: var(--passive-gray);">Formunu
-                doldur, 48 saat içinde dönelim. Her başvuru değerlendirilir, her başvuru kabul edilmez. [cite: 97]</p>
-            <form action="/basvuru" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
-                <input type="text" name="fullname" placeholder="Adınız Soyadınız"
-                    style="padding: 15px; border: 1px solid var(--border-gray);" required>
-                <input type="email" name="email" placeholder="E-posta Adresiniz"
-                    style="padding: 15px; border: 1px solid var(--border-gray);" required>
-                <input type="tel" name="phone" placeholder="Telefon (WhatsApp)"
-                    style="padding: 15px; border: 1px solid var(--border-gray);" required>
-                <select name="interest" style="padding: 15px; border: 1px solid var(--border-gray);">
-                    <option value="Emlak">Emlak</option>
-                    <option value="Hukuk">Hukuk</option>
-                    <option value="Kariyer">Kariyer</option>
-                </select>
-                <button type="submit"
-                    style="padding: 18px; background: #000; color: #fff; font-weight: 700; border: none; cursor: pointer;">Gönder</button>
-            </form>
+    <section class="section apply-section" id="basvur">
+        <div class="container">
+            <div class="form-container">
+                <h2 style="text-align:center; margin-bottom:16px;">Bir adım kaldı.</h2>
+                <p style="text-align:center; margin-bottom:48px; color:var(--passive-gray);">Formunu doldur, 48 saat
+                    içinde dönelim. Her başvuru değerlendirilir, her başvuru kabul edilmez.</p>
+                <form action="/basvuru" method="POST">
+                    <input type="text" name="fullname" placeholder="Adınız Soyadınız" required>
+                    <input type="email" name="email" placeholder="E-posta Adresiniz" required>
+                    <input type="tel" name="phone" placeholder="Telefon (WhatsApp)" required>
+                    <select name="interest">
+                        <option value="Emlak">Emlak</option>
+                        <option value="Hukuk">Hukuk</option>
+                        <option value="Kariyer">Kariyer</option>
+                    </select>
+                    <button type="submit" class="btn-submit">Gönder</button>
+                </form>
+            </div>
         </div>
     </section>
 
-    <section class="section" id="iletisim">
+    <footer id="iletisim">
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <h2 style="font-size: 32px; margin-bottom: 20px;">Konuşalım.<br>Dubai bekliyor.</h2>
-                    <div style="display: flex; gap: 15px; margin-top: 30px;">
-                        <a href="#" style="text-decoration: none; color: #000; font-weight: 700;">@ →</a>
-                        <a href="#" style="text-decoration: none; color: #000; font-weight: 700;">W →</a>
-                        <a href="#" style="text-decoration: none; color: #000; font-weight: 700;">IG →</a>
+                    <h2 style="font-size: 32px; margin-bottom: 24px;">Konuşalım.<br>Dubai bekliyor.</h2>
+                    <p style="color:var(--passive-gray); margin-bottom:32px;">Başvurunuz veya herhangi bir sorunuz için
+                        doğrudan ulaşın.</p>
+                    <div style="display:flex; gap:20px;">
+                        <a href="mailto:info@factnetwork.io"
+                            style="color:#fff; font-weight:700; text-decoration:none;">E-POSTA</a>
+                        <a href="#" style="color:#fff; font-weight:700; text-decoration:none;">INSTAGRAM</a>
+                        <a href="#" style="color:#fff; font-weight:700; text-decoration:none;">LINKEDIN</a>
                     </div>
                 </div>
-                <div style="grid-column: span 2;">
-                    <form style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                        <input type="text" placeholder="Adınız Soyadınız" style="padding: 15px; border: 1px solid var(--border-gray);">
-                        <input type="email" placeholder="ornek@mail.com" style="padding: 15px; border: 1px solid var(--border-gray);">
-                        <textarea placeholder="Merhaba..." style="grid-column: span 2; padding: 15px; border: 1px solid var(--border-gray); height: 100px;"></textarea>
-                        <button type="submit" style="grid-column: span 2; padding: 18px; background: #000; color: #fff; font-weight: 700; border: none; cursor: pointer;">Mesaj Gönder →</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
                 <div>
-                    <h2 style="font-size: 40px; margin-bottom: 20px; letter-spacing: -2px;">Fact.</h2>
-                    <p style="color: var(--passive-gray); font-size: 14px;">Dubai odaklı kariyer ve eğitim ekosisteminin
-                        güvenilir referans noktası. [cite: 64]</p>
+                    <h4 style="margin-bottom:24px; text-transform:uppercase; letter-spacing:1px;">Platform</h4>
+                    <nav class="footer-links">
+                        <a href="/egitimler">Eğitimler</a>
+                        <a href="#hakkimizda">Hakkımızda</a>
+                        <a href="#bulten">Bülten</a>
+                    </nav>
                 </div>
                 <div>
-                    <h4 style="margin-bottom: 20px; font-size: 14px; text-transform: uppercase;">İletişim [cite: 103]
-                    </h4>
-                    <p style="font-size: 14px; color: var(--passive-gray);">info@factnetwork.io [cite: 116]</p>
-                    <p style="font-size: 14px; color: var(--passive-gray);">+971 XX XXX XX XX [cite: 118]</p>
-                </div>
-                <div>
-                    <h4 style="margin-bottom: 20px; font-size: 14px; text-transform: uppercase;">Platform</h4>
-                    <p style="font-size: 14px;"><a href="/egitimler"
-                            style="color: var(--passive-gray); text-decoration: none;">Eğitimler</a></p>
-                    <p style="font-size: 14px;"><a href="#hakkimizda"
-                            style="color: var(--passive-gray); text-decoration: none;">Hakkımızda</a></p>
+                    <h4 style="margin-bottom:24px; text-transform:uppercase; letter-spacing:1px;">Ofis</h4>
+                    <p style="color:var(--passive-gray);">Dubai, UAE</p>
+                    <p style="color:var(--passive-gray); margin-top:12px;">info@factnetwork.io</p>
                 </div>
             </div>
             <div
-                style="margin-top: 60px; padding-top: 30px; border-top: 1px solid #333; font-size: 12px; color: var(--passive-gray); text-align: center;">
+                style="margin-top:80px; padding-top:40px; border-top:1px solid #333; text-align:center; color:var(--passive-gray); font-size:12px;">
                 © 2024 Fact Network. Tüm hakları saklıdır. [cite: 14]
             </div>
         </div>
     </footer>
 
-    <a href="https://wa.me/971XXXXXXXXX" class="whatsapp-float" target="_blank">WhatsApp Destek [cite: 117]</a>
+    <a href="https://wa.me/971XXXXXXXXX" class="whatsapp-float" target="_blank">WhatsApp Destek</a>
 
 </body>
 
