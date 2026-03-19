@@ -34,10 +34,10 @@ def home():
     # index.html dosyasını templates klasöründen render eder
     return render_template('index.html', services=SERVICES)
 
-@app.route('/egitmenler')
-def egitmenler():
-    # Eğitmenler sayfası için rota
-    return render_template('egitmenler.html', instructors=INSTRUCTORS)
+@app.route('/egitimler')
+def egitimler():
+    # Eğitimler sayfası için rota
+    return render_template('egitimler.html', instructors=INSTRUCTORS)
 
 # Favicon 404 hatasını önlemek için rota
 @app.route('/favicon.ico')
