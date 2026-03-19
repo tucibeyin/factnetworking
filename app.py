@@ -1,10 +1,9 @@
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template, send_from_directory, request, redirect
 import os
 
 app = Flask(__name__)
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
-# PDF'deki Hizmet ve Eğitim Verileri 
 SERVICES = [
     {"title": "Dubai Emlak Eğitimi", "desc": "Piyasa yapısı, RERA lisansı ve Komisyon sistemi. [cite: 37, 38]", "tag": "Emlak"},
     {"title": "Hukuk & Şirket Kurulum", "desc": "Mainland/Free Zone yapıları ve sözleşme yönetimi. [cite: 39, 40]", "tag": "Hukuk"},
@@ -14,13 +13,13 @@ SERVICES = [
     {"title": "Ücretsiz Webinar", "desc": "Canlı oturumlarla Dubai'den haberler. [cite: 49, 50]", "tag": "Canlı"}
 ]
 
-# Dinamik Eğitmen Verisi (Gelecekte genişletilebilir)
 INSTRUCTORS = [
     {
         "name": "Ahmet Yılmaz",
         "title": "Senior Broker",
         "level": "K5",
         "category": "Emlak",
+        "image": "https://via.placeholder.com/400x500", # EKSİK OLAN RESİM EKLENDİ
         "intro": "Dubai premium segmentinde, lüks konut satışı ve yatırımcı yönetimi uzmanı.",
         "courses": [
             {"title": "Dubai'de Gayrimenkul Yatırımı", "price": "1.250 AED", "type": "Video Kurs", "link": "#"},
@@ -31,15 +30,23 @@ INSTRUCTORS = [
 
 @app.route('/')
 def home():
-    # index.html dosyasını templates klasöründen render eder
     return render_template('index.html', services=SERVICES)
 
 @app.route('/egitimler')
 def egitimler():
-    # Eğitimler sayfası için rota
-    return render_template('egitimler.html', instructors=INSTRUCTORS)
+    # FİLTRELEME MANTIĞI EKLENDİ
+    category_filter = request.args.get('category')
+    if category_filter:
+        filtered_list = [i for i in INSTRUCTORS if i['category'] == category_filter]
+    else:
+        filtered_list = INSTRUCTORS
+    return render_template('egitimler.html', instructors=filtered_list)
 
-# Favicon 404 hatasını önlemek için rota
+@app.route('/basvuru', methods=['POST'])
+def basvuru():
+    # Form verilerini burada yakalayabiliriz (Şimdilik ana sayfaya dönüyor)
+    return redirect('/')
+
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
