@@ -1364,50 +1364,53 @@
 
         // Galaxy Animasyonu
         const CW = 170, CH = 115;
-        function buildGalaxy() {
-            const scene = document.getElementById('scene');
-            if (!scene) return;
-            scene.querySelectorAll('.dcard').forEach(e => e.remove());
-            const W = scene.offsetWidth, H = 860;
-            const cx = W / 2, cy = H / 2;
-            const canvas = document.getElementById('starfield');
-            canvas.width = W; canvas.height = H;
-            const ctx = canvas.getContext('2d');
-            ctx.clearRect(0, 0, W, H);
+        function noOverlap(p,x,y,pad=18){return !p.some(q=>x<q.x+CW+pad&&x+CW+pad>q.x&&y<q.y+CH+pad&&y+CH+pad>q.y);}
+        function noCenter(x,y,cx,cy,s=140){const dx=x+CW/2-cx,dy=y+CH/2-cy;return Math.sqrt(dx*dx+dy*dy)>s;}
 
-            // Yıldızlar
-            for (let i = 0; i < 300; i++) {
-                ctx.beginPath(); ctx.arc(Math.random() * W, Math.random() * H, Math.random() * 1, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255,255,255,${Math.random() * 0.5})`; ctx.fill();
-            }
-
-            const placed = [], cardEls = [];
-            svcData.forEach((svc, i) => {
-                let lx, ly, tries = 0;
-                do {
-                    lx = 50 + Math.random() * (W - CW - 100);
-                    ly = 50 + Math.random() * (H - CH - 100);
-                    tries++;
-                } while (tries < 100 && Math.sqrt(Math.pow(lx + CW / 2 - cx, 2) + Math.pow(ly + CH / 2 - cy, 2)) < 150);
-
-                placed.push({ x: lx, y: ly });
-                const el = document.createElement('div');
-                el.className = 'dcard';
-                el.style.cssText = `left:${lx}px; top:${ly}px; opacity:${0.3 + (1 - svc.depth) * 0.7}; transform:scale(${0.7 + (1 - svc.depth) * 0.3}); animation-delay:${i * 0.1}s;`;
-                el.innerHTML = `<div class="dn">${svc.num}</div><div class="dt">${svc.title}</div><div class="ds">${svc.sub}</div><div class="dtag">${svc.tag}</div>`;
-                scene.appendChild(el);
-                cardEls.push({ px: lx + CW / 2, py: ly + CH / 2, d: svc.depth });
+        function buildGalaxy(){
+            const scene=document.getElementById('scene');
+            if(!scene) return;
+            scene.querySelectorAll('.dcard').forEach(e=>e.remove());
+            const W=scene.offsetWidth,H=860;
+            scene.style.height=H+'px';
+            const cx=W/2,cy=H/2;
+            const canvas=document.getElementById('starfield');
+            canvas.width=W;canvas.height=H;
+            const ctx=canvas.getContext('2d');
+            ctx.clearRect(0,0,W,H);
+            for(let i=0;i<320;i++){const x=Math.random()*W,y=Math.random()*H,r=Math.random()*1.1+0.2;ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fillStyle=`rgba(255,255,255,${Math.random()*0.55+0.1})`;ctx.fill();}
+            for(let i=0;i<14;i++){const x=Math.random()*W,y=Math.random()*H,r=Math.random()*2+0.8;const g=ctx.createRadialGradient(x,y,0,x,y,r*8);g.addColorStop(0,'rgba(255,255,255,0.85)');g.addColorStop(0.3,'rgba(255,255,255,0.12)');g.addColorStop(1,'rgba(255,255,255,0)');ctx.beginPath();ctx.arc(x,y,r*8,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();}
+            const margin=24,placed=[],cardEls=[];
+            svcData.forEach((svc,i)=>{
+                const d=svc.depth;let lx,ly,tries=0;
+                do{lx=margin+Math.random()*(W-CW-margin*2);ly=margin+Math.random()*(H-CH-margin*2);tries++;}
+                while(tries<500&&(!noOverlap(placed,lx,ly)||!noCenter(lx,ly,cx,cy)));
+                placed.push({x:lx,y:ly});
+                const px=lx+CW/2,py=ly+CH/2;
+                const opacity=0.20+(1-d)*0.70,scale=0.62+(1-d)*0.46;
+                const fsT=Math.round(11+(1-d)*3),fsS=Math.round(9+(1-d)*2),ico=Math.round(13+(1-d)*5);
+                const el=document.createElement('div');
+                el.className='dcard';
+                el.style.cssText=`left:${lx}px;top:${ly}px;opacity:${opacity};z-index:${Math.round(3+(1-d)*12)};transform:scale(${scale});transform-origin:center center;animation-delay:${i*0.06}s;`;
+                el.innerHTML=`<div class="dn" style="font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.14);margin-bottom:8px;transition:color .2s">${svc.num}</div><div style="margin-bottom:9px"><svg viewBox="0 0 24 24" style="width:${ico}px;height:${ico}px;stroke:rgba(255,255,255,${0.25+(1-d)*0.38});fill:none;stroke-width:1.5;transition:stroke .2s">${svc.icon || ''}</svg></div><div class="dt" style="font-size:${fsT}px;font-weight:800;color:rgba(255,255,255,${0.58+(1-d)*0.40});margin-bottom:4px;line-height:1.25;transition:color .2s">${svc.title}</div><div class="ds" style="font-size:${fsS}px;color:rgba(255,255,255,.18);line-height:1.5;margin-bottom:8px;transition:color .2s">${svc.sub}</div><div class="dtag" style="font-size:8px;font-weight:700;letter-spacing:1px;color:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.07);padding:2px 7px;display:inline-block;transition:all .2s">${svc.tag}</div>`;
+                scene.appendChild(el);cardEls.push({px,py,d});
             });
-
-            // Çizgiler
-            const svg = document.getElementById('glines');
-            svg.innerHTML = '';
-            cardEls.forEach(({ px, py, d }) => {
-                const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-                line.setAttribute('x1', cx); line.setAttribute('y1', cy); line.setAttribute('x2', px); line.setAttribute('y2', py);
-                line.setAttribute('stroke', `rgba(255,255,255,${0.1 + (1 - d) * 0.2})`); line.setAttribute('stroke-width', '1');
-                svg.appendChild(line);
-            });
+            setTimeout(()=>{
+                const svg=document.getElementById('glines');
+                if(!svg) return;
+                svg.innerHTML='';svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.setAttribute('width',W);svg.setAttribute('height',H);
+                [90,160,235].forEach((r,i)=>{const c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('cx',cx);c.setAttribute('cy',cy);c.setAttribute('r',r);c.setAttribute('fill','none');c.setAttribute('stroke',`rgba(255,255,255,${0.035-i*0.008})`);c.setAttribute('stroke-width','1');svg.appendChild(c);});
+                const defs=document.createElementNS('http://www.w3.org/2000/svg','defs');svg.insertBefore(defs,svg.firstChild);
+                cardEls.forEach(({px,py,d})=>{
+                    const op=0.06+(1-d)*0.2,gId='g'+Math.random().toString(36).substr(2,5);
+                    const grad=document.createElementNS('http://www.w3.org/2000/svg','linearGradient');
+                    grad.setAttribute('id',gId);grad.setAttribute('x1',cx);grad.setAttribute('y1',cy);grad.setAttribute('x2',px);grad.setAttribute('y2',py);grad.setAttribute('gradientUnits','userSpaceOnUse');
+                    grad.innerHTML=`<stop offset="0%" stop-color="rgba(255,255,255,${op*1.6})"/><stop offset="100%" stop-color="rgba(255,255,255,0.01)"/>`;defs.appendChild(grad);
+                    const line=document.createElementNS('http://www.w3.org/2000/svg','line');line.setAttribute('x1',cx);line.setAttribute('y1',cy);line.setAttribute('x2',px);line.setAttribute('y2',py);line.setAttribute('stroke',`url(#${gId})`);line.setAttribute('stroke-width',d<0.25?'1.4':'0.8');svg.appendChild(line);
+                    const dr=1.5+(1-d)*2.8;const dot=document.createElementNS('http://www.w3.org/2000/svg','circle');dot.setAttribute('cx',px);dot.setAttribute('cy',py);dot.setAttribute('r',dr);dot.setAttribute('fill','#fff');dot.setAttribute('opacity',0.15+(1-d)*0.45);svg.appendChild(dot);
+                    if(d<0.3){const glow=document.createElementNS('http://www.w3.org/2000/svg','circle');glow.setAttribute('cx',px);glow.setAttribute('cy',py);glow.setAttribute('r',dr*3.5);glow.setAttribute('fill','none');glow.setAttribute('stroke','rgba(255,255,255,0.09)');glow.setAttribute('stroke-width','1');svg.appendChild(glow);}
+                });
+            },80);
         }
 
         // İlk sayfa yüklemesi
