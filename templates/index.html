@@ -4,499 +4,1415 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fact Network | Dubai'de Kariyer. Sistematik.</title>
-    <meta name="description"
-        content="Dubai emlak, hukuk ve kariyer alanında ihtiyacın olan her şey tek platformda. Doğru eğitim, doğru ağ, doğru başlangıç.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Fact Network — Dubai Career Education Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <style>
-        /* Tasarım Rehberi Renk Paleti  */
-        :root {
-            --primary-black: #000000;
-            --body-text: #1A1A1A;
-            --medium-gray: #3A3A3A;
-            --passive-gray: #707070;
-            --light-gray: #F2F2F2;
-            --pure-white: #FFFFFF;
-            --border-gray: #CCCCCC;
-        }
-
+        /* CSS RESET VE ANA STİLLER */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html,
         body {
             font-family: 'Inter', sans-serif;
-            color: var(--body-text);
-            background-color: var(--pure-white);
-            line-height: 1.6;
+            background: #fff;
+            width: 100%;
+            color: #000;
+            overflow-x: hidden;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
+        .page {
+            display: none;
         }
 
-        /* Header & Nav [cite: 4, 181, 193] */
-        header {
-            padding: 24px 0;
-            border-bottom: 1px solid var(--border-gray);
+        .page.show {
+            display: block;
+        }
+
+        /* NAV */
+        .nav {
+            background: #fff;
+            border-bottom: 1px solid #e8e8e8;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            height: 60px;
             position: sticky;
             top: 0;
-            background: #fff;
             z-index: 1000;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
 
         .logo {
-            font-weight: 800;
-            font-size: 26px;
-            letter-spacing: -1.5px;
+            font-size: 20px;
+            font-weight: 900;
+            color: #000;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
         }
 
         .nav-links a {
-            text-decoration: none;
-            color: var(--primary-black);
-            margin-left: 32px;
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .btn-start {
-            background: var(--primary-black);
-            color: #fff !important;
-            padding: 10px 24px;
-            font-weight: 700;
-        }
-
-        /* Hero Section [cite: 6-17, 193] */
-        .hero {
-            background: var(--primary-black);
-            color: #fff;
-            padding: 120px 0;
-        }
-
-        .hero-tag {
-            color: var(--passive-gray);
+            color: #aaa;
             font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 24px;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color .15s;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 2px;
         }
 
-        .hero h1 {
-            font-size: 72px;
+        .nav-links a:hover {
+            color: #000;
+        }
+
+        .nav-links a.active {
+            color: #000;
             font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 24px;
+            border-bottom-color: #000;
         }
 
-        .hero p {
-            max-width: 600px;
-            color: var(--passive-gray);
-            font-size: 18px;
-            margin-bottom: 48px;
-        }
-
-        /* Stats Bar  */
-        .stats-bar {
+        .nav-cta {
             background: #000;
             color: #fff;
-            padding: 40px 0;
-            border-top: 1px solid #1A1A1A;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-        }
-
-        .stat-item h4 {
-            font-size: 36px;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .stat-item p {
             font-size: 11px;
-            text-transform: uppercase;
-            color: var(--passive-gray);
-            letter-spacing: 1px;
+            font-weight: 700;
+            padding: 9px 20px;
+            border: none;
+            cursor: pointer;
         }
 
-        /* Process Section (How it Works) [cite: 19, 193] */
-        .process-section {
-            padding: 120px 0;
-            text-align: center;
+        /* SHARED STYLES */
+        .hero-page {
+            background: #000;
+            padding: 80px 5% 72px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-page::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+
+        .hp-inner {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 48px;
+        }
+
+        .hp-eye {
+            font-size: 10px;
+            font-weight: 700;
+            color: #fff;
+            opacity: .3;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hp-eye::before {
+            content: '';
+            width: 14px;
+            height: 1px;
             background: #fff;
         }
 
-        .process-grid {
+        .hp-title {
+            font-size: clamp(44px, 6vw, 80px);
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: -3px;
+            line-height: .93;
+        }
+
+        .hp-title em {
+            -webkit-text-stroke: 1.5px rgba(255, 255, 255, .2);
+            color: transparent;
+            font-style: normal;
+        }
+
+        .hp-desc {
+            font-size: 14px;
+            color: #fff;
+            opacity: .35;
+            line-height: 1.8;
+            max-width: 320px;
+            text-align: right;
+        }
+
+        .sec-w {
+            background: #fff;
+            padding: 72px 5%;
+        }
+
+        .sec-b {
+            background: #000;
+            padding: 72px 5%;
+        }
+
+        .two {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            max-width: 1000px;
-            margin: 60px auto;
+            grid-template-columns: 1fr 1fr;
+            gap: 56px;
+            align-items: center;
         }
 
-        .step-item {
-            padding: 40px 20px;
-            background: var(--light-gray);
-            border-radius: 4px;
-        }
-
-        .step-num {
-            font-size: 12px;
-            font-weight: 800;
-            color: var(--passive-gray);
-            display: block;
-            margin-bottom: 12px;
-        }
-
-        .step-text {
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--primary-black);
-        }
-
-        /* Cards & Services [cite: 32-51, 193] */
-        .section {
-            padding: 120px 0;
-        }
-
-        .grid-3 {
+        .three {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 32px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
         }
 
-        .card {
-            padding: 48px;
-            border: 1px solid var(--border-gray);
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            border-color: var(--primary-black);
-        }
-
-        .card small {
-            text-transform: uppercase;
+        .eye-w {
             font-size: 10px;
             font-weight: 700;
-            color: var(--passive-gray);
+            color: #000;
+            opacity: .3;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .eye-w::before {
+            content: '';
+            width: 14px;
+            height: 1px;
+            background: #000;
+        }
+
+        .eye-b {
+            font-size: 10px;
+            font-weight: 700;
+            color: #fff;
+            opacity: .3;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .eye-b::before {
+            content: '';
+            width: 14px;
+            height: 1px;
+            background: #fff;
+        }
+
+        h2.bk {
+            font-size: clamp(26px, 3.2vw, 40px);
+            font-weight: 900;
+            color: #000;
+            letter-spacing: -1.5px;
+            line-height: 1.02;
+            margin-bottom: 14px;
+        }
+
+        h2.wh {
+            font-size: clamp(26px, 3.2vw, 40px);
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: -1.5px;
+            line-height: 1.02;
+            margin-bottom: 14px;
+        }
+
+        p.bk {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #000;
+            opacity: .55;
+            margin-bottom: 24px;
+        }
+
+        p.bk strong {
+            opacity: 1;
+            color: #000;
+        }
+
+        p.wh {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #fff;
+            opacity: .55;
+            margin-bottom: 24px;
+        }
+
+        p.wh strong {
+            opacity: 1;
+            color: #fff;
+        }
+
+        .btns {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .bb {
+            background: #000;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 11px 22px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .bo {
+            background: #fff;
+            color: #000;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 11px 16px;
+            border: 1px solid #000;
+            cursor: pointer;
+        }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sr {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            padding: 16px 0;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .sbox {
+            width: 30px;
+            height: 30px;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .sbox span {
+            font-size: 10px;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .sr-t {
+            font-size: 13px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 2px;
+        }
+
+        .sr-b {
+            font-size: 12px;
+            color: #000;
+            opacity: .45;
+            line-height: 1.5;
+        }
+
+        .aud-c {
+            background: #fff;
+            border: 1px solid #000;
+            padding: 28px 22px;
+            transition: all .15s;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+        }
+
+        .aud-c:hover {
+            background: #000;
+        }
+
+        .aud-c:hover .a-t,
+        .aud-c:hover .a-b {
+            color: #fff;
+        }
+
+        .aud-c:hover .a-dot {
+            background: #fff;
+        }
+
+        .a-dot {
+            width: 6px;
+            height: 6px;
+            background: #000;
+            margin-bottom: 16px;
+            transition: background .15s;
+        }
+
+        .a-tag {
+            font-size: 9px;
+            font-weight: 700;
+            color: #000;
+            opacity: .3;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .a-t {
+            font-size: 15px;
+            font-weight: 800;
+            color: #000;
+            margin-bottom: 7px;
+            transition: color .15s;
+        }
+
+        .a-b {
+            font-size: 12px;
+            color: #000;
+            opacity: .55;
+            line-height: 1.6;
+            transition: color .15s;
+        }
+
+        .cta-in {
+            background: #000;
+            border: 1px solid #333;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            padding: 12px 14px;
+            outline: none;
+            width: 100%;
+            margin-bottom: 2px;
+            display: block;
+        }
+
+        .cta-in::placeholder {
+            color: #fff;
+            opacity: .25;
+        }
+
+        .cta-btn-w {
+            background: #fff;
+            color: #000;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 13px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 2px;
+            display: block;
+        }
+
+        .cta-note {
+            font-size: 10px;
+            color: #fff;
+            opacity: .3;
+            margin-top: 8px;
+            line-height: 1.5;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: #000;
+            border-top: 1px solid #111;
+            padding: 44px 5% 24px;
+        }
+
+        .fg {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 36px;
+            margin-bottom: 36px;
+        }
+
+        .f-logo {
+            font-size: 18px;
+            font-weight: 900;
+            color: #fff;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .f-desc {
+            font-size: 11px;
+            color: #fff;
+            opacity: .3;
+            line-height: 1.6;
+            max-width: 210px;
+        }
+
+        .f-col h5 {
+            font-size: 9px;
+            font-weight: 700;
+            color: #fff;
+            opacity: .2;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        .f-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .f-col a {
+            font-size: 12px;
+            color: #fff;
+            opacity: .4;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .f-col a:hover {
+            opacity: 1;
+        }
+
+        .fb {
+            border-top: 1px solid #111;
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .f-copy {
+            font-size: 11px;
+            color: #fff;
+            opacity: .2;
+        }
+
+        .f-leg {
+            display: flex;
+            gap: 16px;
+        }
+
+        .f-leg a {
+            font-size: 11px;
+            color: #fff;
+            opacity: .2;
+            text-decoration: none;
+        }
+
+        /* ANASAYFA SPESİFİK */
+        .hero-main {
+            background: #000;
+            padding: 56px 5% 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-main::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+
+        .hero-body {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 40px;
+            align-items: end;
+            position: relative;
+            z-index: 2;
+            padding-bottom: 56px;
+        }
+
+        .h-eye {
+            font-size: 10px;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            opacity: .5;
+        }
+
+        .h-eye::before {
+            content: '';
+            width: 20px;
+            height: 1px;
+            background: #fff;
+        }
+
+        h1 {
+            font-size: clamp(44px, 6.5vw, 88px);
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: -3px;
+            line-height: 0.93;
+        }
+
+        h1 .ghost {
+            -webkit-text-stroke: 1.5px #fff;
+            color: transparent;
+            opacity: .2;
+        }
+
+        .why-rows {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .wr {
+            border-top: 1px solid #222;
+            padding: 14px 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .wr:last-child {
+            border-bottom: 1px solid #222;
+        }
+
+        .wd {
+            width: 4px;
+            height: 4px;
+            background: #555;
+            border-radius: 50%;
+            margin-top: 5px;
+            flex-shrink: 0;
+        }
+
+        .wr-h {
+            font-size: 12px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 2px;
+        }
+
+        .wr-b {
+            font-size: 11px;
+            color: #fff;
+            opacity: .45;
+            line-height: 1.5;
+        }
+
+        .hero-nums {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-top: 1px solid #222;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hn {
+            padding: 18px 0 18px 20px;
+            border-right: 1px solid #222;
+        }
+
+        .hn:last-child {
+            border-right: none;
+        }
+
+        .hn-n {
+            font-size: 24px;
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: -1px;
+            line-height: 1;
+            margin-bottom: 3px;
+        }
+
+        .hn-l {
+            font-size: 9px;
+            font-weight: 500;
+            color: #fff;
+            opacity: .4;
             letter-spacing: 1px;
         }
 
-        .card h3 {
-            font-size: 24px;
-            margin: 16px 0;
-        }
-
-        /* Audience & About Stats [cite: 52-74] */
-        .audience-section {
-            background: var(--light-gray);
-        }
-
-        .about-stats {
-            display: flex;
-            gap: 40px;
-            justify-content: center;
-            margin: 48px 0;
-        }
-
-        .about-stat-box {
-            background: var(--light-gray);
-            padding: 24px 40px;
-            text-align: center;
-            flex: 1;
-        }
-
-        .about-stat-box span {
-            display: block;
-            font-size: 32px;
+        /* EĞİTİMLER SPESİFİK */
+        .pt-eye {
+            font-size: 10px;
             font-weight: 700;
-            margin-bottom: 4px;
+            color: #000;
+            opacity: .3;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        /* Form Styling [cite: 96-103] */
-        .apply-section {
-            background: #f4f4f4;
+        .pt-eye::before {
+            content: '';
+            width: 14px;
+            height: 1px;
+            background: #000;
         }
 
-        .form-container {
-            max-width: 600px;
-            margin: 0 auto;
+        .pt-title {
+            font-size: clamp(36px, 5vw, 64px);
+            font-weight: 900;
+            color: #000;
+            letter-spacing: -2px;
+            line-height: .97;
         }
 
-        input,
-        select,
-        textarea {
-            width: 100%;
-            padding: 16px;
-            border: 1px solid var(--border-gray);
-            font-family: inherit;
-            font-size: 15px;
-            margin-bottom: 16px;
+        .pt-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 16px;
         }
 
-        .btn-submit {
-            width: 100%;
-            padding: 20px;
+        .pt-desc {
+            font-size: 13px;
+            color: #888;
+            line-height: 1.75;
+            max-width: 300px;
+            text-align: right;
+        }
+
+        .filter-row {
+            display: flex;
+            gap: 2px;
+        }
+
+        .f-btn {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 8px 16px;
+            cursor: pointer;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border: 1px solid #e0e0e0;
+            background: #fff;
+            color: #999;
+        }
+
+        .f-btn.on {
             background: #000;
             color: #fff;
+            border-color: #000;
+        }
+
+        .cat-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 28px 5%;
+            border-bottom: 2px solid #000;
+        }
+
+        .cb-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .cb-num {
+            font-size: 10px;
             font-weight: 700;
-            border: none;
-            cursor: pointer;
+            color: #000;
+            opacity: .2;
+            letter-spacing: 3px;
             text-transform: uppercase;
         }
 
-        /* Footer [cite: 122-137] */
-        footer {
-            background: var(--primary-black);
-            color: #fff;
-            padding: 80px 0;
-            font-size: 14px;
+        .cb-title {
+            font-size: 18px;
+            font-weight: 900;
+            color: #000;
         }
 
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 64px;
-        }
-
-        .footer-links a {
-            display: block;
-            color: var(--passive-gray);
+        .card-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px 5%;
+            border-bottom: 1px solid #f0f0f0;
+            cursor: pointer;
+            transition: background .15s;
+            gap: 24px;
             text-decoration: none;
-            margin-bottom: 12px;
+            color: inherit;
         }
 
-        /* WhatsApp [cite: 117, 241] */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 40px;
-            right: 40px;
-            background: #25D366;
+        .card-row:hover {
+            background: #000;
             color: #fff;
-            padding: 16px 32px;
-            border-radius: 100px;
-            text-decoration: none;
+        }
+
+        .card-row:hover .cr-desc,
+        .card-row:hover .cr-tag,
+        .card-row:hover .cr-level {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .card-row:hover .cr-num {
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .cr-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .cr-num {
+            font-size: 10px;
             font-weight: 700;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
+            color: #ccc;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 48px;
+        .cr-title {
+            font-size: 15px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .cr-desc {
+            font-size: 12px;
+            color: #888;
+            line-height: 1.55;
+        }
+
+        .cr-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-shrink: 0;
+        }
+
+        .cr-tag {
+            font-size: 9px;
+            font-weight: 600;
+            color: #bbb;
+            border: 1px solid #e8e8e8;
+            padding: 4px 10px;
+            letter-spacing: 1px;
+        }
+
+        .cr-level {
+            font-size: 9px;
+            font-weight: 700;
+            color: #bbb;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .cr-price {
+            font-size: 15px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            min-width: 60px;
+            text-align: right;
+        }
+
+        /* HİZMETLER (GALAXY) SPESİFİK */
+        .galaxy-page {
+            background: #000;
+        }
+
+        .scene {
+            position: relative;
+            width: 100%;
+            height: 860px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        #starfield {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .nebula {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(50, 25, 90, 0.08) 0%, transparent 70%);
+        }
+
+        .glines {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .gcenter {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 15;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            pointer-events: none;
+        }
+
+        .gcenter-txt {
+            font-size: 42px;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.88);
+            letter-spacing: -2.5px;
+            line-height: 1;
+        }
+
+        .gcenter-sub {
+            font-size: 9px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.20);
+            letter-spacing: 6px;
+            text-transform: uppercase;
+        }
+
+        .dcard {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            padding: 16px 18px;
+            cursor: pointer;
+            width: 170px;
+            z-index: 5;
+            opacity: 0;
+            animation: fadeUp .5s ease forwards;
+            transition: all .25s ease;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
             }
 
-            .footer-grid {
-                grid-template-columns: 1fr;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
+        }
+
+        .dcard:hover {
+            background: #fff !important;
+            border-color: #fff !important;
+            transform: translateY(-6px) scale(1.04) !important;
+            z-index: 30 !important;
+        }
+
+        .dcard:hover .dt,
+        .dcard:hover .ds,
+        .dcard:hover .dn,
+        .dcard:hover .dtag {
+            color: #000 !important;
+            opacity: 1 !important;
+        }
+
+        .dcard:hover svg {
+            stroke: #000 !important;
+        }
+
+        /* İLETİŞİM SPESİFİK */
+        .contact-main {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 520px;
+        }
+
+        .contact-left {
+            background: #000;
+            padding: 64px 5%;
+        }
+
+        .ch-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-top: 1px solid #111;
+            cursor: pointer;
+            gap: 16px;
+        }
+
+        .ch-row:hover .ch-lbl {
+            color: #fff;
+            opacity: 1;
+        }
+
+        .ch-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ch-icon svg {
+            width: 16px;
+            height: 16px;
+            stroke: #fff;
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .ch-lbl {
+            font-size: 13px;
+            font-weight: 600;
+            color: #fff;
+            opacity: .55;
+        }
+
+        .contact-right {
+            background: #fff;
+            padding: 64px 5%;
+            border-left: 1px solid #e8e8e8;
+        }
+
+        .f-in,
+        .f-ta {
+            border: 1px solid #e0e0e0;
+            color: #000;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            padding: 12px 14px;
+            outline: none;
+            width: 100%;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .f-submit {
+            background: #000;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 13px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
         }
     </style>
 </head>
 
 <body>
 
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">Fact.</div>
-                <div class="nav-links">
-                    <a href="/egitimler">Eğitimler</a>
-                    <a href="#hizmetler">Hizmetlerimiz</a>
-                    <a href="#hakkimizda">Hakkımızda</a>
-                    <a href="#bulten">Bülten</a>
-                    <a href="/login" style="opacity: 0.6;">Giriş Yap</a>
-                    <a href="#basvur" class="btn-start">Başla →</a>
-                </div>
-            </nav>
-        </div>
-    </header>
+    <nav class="nav">
+        <div class="logo" onclick="showPage('anasayfa')">Fact.</div>
+        <ul class="nav-links">
+            <li><a onclick="showPage('egitimler')" id="nav-egitimler">Eğitimler</a></li>
+            <li><a onclick="showPage('hizmetler')" id="nav-hizmetler">Hizmetlerimiz</a></li>
+            <li><a onclick="showPage('hakkimizda')" id="nav-hakkimizda">Hakkımızda</a></li>
+            <li><a onclick="showPage('iletisim')" id="nav-iletisim">İletişim</a></li>
+        </ul>
+        <button class="nav-cta" onclick="showPage('egitimler')">Başla →</button>
+    </nav>
 
-    <section class="hero">
-        <div class="container">
-            <p class="hero-tag">Dubai Career Education Platform</p>
-            <h1>Dubai'de Kariyer.<br>Sistematik.</h1>
-            <p>Kazandığının tamamı sende kalır. Tek satışta ciddi komisyon. Dünyanın her yerinden müşteriye ulaş.</p>
+    <div class="page show" id="page-anasayfa">
+        <div class="hero-main">
+            <div class="hero-body">
+                <div>
+                    <div class="h-eye">Dubai Career Education Platform [cite: 5, 143]</div>
+                    <h1>Dubai'de<br><span class="ghost">Kariyer</span><br>Kurmak<br>İsteyenler. [cite: 7]</h1>
+                </div>
+                <div class="why-rows">
+                    <div class="wr">
+                        <div class="wd"></div>
+                        <div>
+                            <div class="wr-h">Kazandığının tamamı sende kalır [cite: 8]</div>
+                            <div class="wr-b">Dubai'de gelir vergisi sıfır. [cite: 8]</div>
+                        </div>
+                    </div>
+                    <div class="wr">
+                        <div class="wd"></div>
+                        <div>
+                            <div class="wr-h">Tek satışta ciddi komisyon [cite: 9]</div>
+                            <div class="wr-b">2M AED üzeri işlem, %2–4 pay. [cite: 9]</div>
+                        </div>
+                    </div>
+                    <div class="wr">
+                        <div class="wd"></div>
+                        <div>
+                            <div class="wr-h">Dünyanın her yerinden müşteri [cite: 10]</div>
+                            <div class="wr-b">190+ ülkeden yatırımcı Dubai'de. [cite: 10]</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-nums">
+                <div class="hn">
+                    <div class="hn-n">$120B [cite: 12]</div>
+                    <div class="hn-l">Dubai emlak hacmi</div>
+                </div>
+                <div class="hn">
+                    <div class="hn-n">%0 [cite: 13]</div>
+                    <div class="hn-l">Gelir vergisi</div>
+                </div>
+                <div class="hn">
+                    <div class="hn-n">200K+ [cite: 14]</div>
+                    <div class="hn-l">Türkiye'den Dubai araması</div>
+                </div>
+                <div class="hn">
+                    <div class="hn-n">3X [cite: 15]</div>
+                    <div class="hn-l">Gelir artış potansiyeli</div>
+                </div>
+            </div>
         </div>
-    </section>
 
-    <div class="stats-bar">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <h4>$120B</h4>
-                    <p>Dubai Emlak Hacmi</p>
+        <div class="sec-w">
+            <div class="two">
+                <div>
+                    <div class="eye-w">Platform</div>
+                    <h2 class="bk">Bilgini sisteme dönüştür. [cite: 19]</h2>
+                    <p class="bk">Dubai emlak, hukuk ve kariyer alanında ihtiyacın olan her şey tek platformda.
+                        <strong>Doğru eğitim, doğru ağ, doğru başlangıç.</strong> [cite: 23]</p>
+                    <div class="btns"><button class="bb" onclick="showPage('egitimler')">Eğitimlerimizi İncele
+                            →</button></div>
                 </div>
-                <div class="stat-item">
-                    <h4>%0</h4>
-                    <p>Gelir Vergisi</p>
+                <div class="steps">
+                    <div class="sr">
+                        <div class="sbox"><span>01</span></div>
+                        <div>
+                            <div class="sr-t">Eğitimi seç [cite: 20]</div>
+                            <div class="sr-b">Emlak, hukuk veya kariyer programını bul. [cite: 22]</div>
+                        </div>
+                    </div>
+                    <div class="sr">
+                        <div class="sbox"><span>02</span></div>
+                        <div>
+                            <div class="sr-t">Mentorluk al [cite: 24]</div>
+                            <div class="sr-b">Uzmanlardan birebir yol haritası çıkar. [cite: 26]</div>
+                        </div>
+                    </div>
+                    <div class="sr">
+                        <div class="sbox"><span>03</span></div>
+                        <div>
+                            <div class="sr-t">Ağa dahil ol [cite: 29]</div>
+                            <div class="sr-b">Dubai'deki doğru kişilerle bağlantı kur. [cite: 31]</div>
+                        </div>
+                    </div>
+                    <div class="sr">
+                        <div class="sbox"><span>04</span></div>
+                        <div>
+                            <div class="sr-t">Gelir üret [cite: 35]</div>
+                            <div class="sr-b">Referral ve komisyonla çok kanallı kazan. [cite: 37]</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="stat-item">
-                    <h4>200K+</h4>
-                    <p>Aktif Profesyonel</p>
+            </div>
+        </div>
+
+        <div class="sec-b">
+            <div class="eye-b">Kimler İçin [cite: 52]</div>
+            <h2 class="wh" style="margin-bottom:32px;">Bu platform seni bekliyor. [cite: 53]</h2>
+            <div class="three">
+                <div class="aud-c">
+                    <div class="a-dot"></div>
+                    <div class="a-tag">Birincil [cite: 54]</div>
+                    <div class="a-t">Kariyer Arayanlar [cite: 55]</div>
+                    <div class="a-b">22-40 yaş, girişimci ruhlu, Dubai'de yüksek gelirli kariyer peşinde olanlar. [cite:
+                        56]</div>
                 </div>
-                <div class="stat-item">
-                    <h4>3X</h4>
-                    <p>Gelir Artış Potansiyeli</p>
+                <div class="aud-c">
+                    <div class="a-dot"></div>
+                    <div class="a-tag">İkincil [cite: 57]</div>
+                    <div class="a-t">Sektör Profesyonelleri [cite: 58]</div>
+                    <div class="a-b">Türkiye'de ağı olan emlakçılar, yatırım danışmanları ve hukuk profesyonelleri.
+                        [cite: 59]</div>
+                </div>
+                <div class="aud-c">
+                    <div class="a-dot"></div>
+                    <div class="a-tag">Üçüncül [cite: 60]</div>
+                    <div class="a-t">Yatırımcılar [cite: 61]</div>
+                    <div class="a-b">Dubai'ye taşınmadan şirket kurmak veya yatırım yapmak isteyenler. [cite: 62]</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sec-b" style="border-top:1px solid #111;">
+            <div class="two">
+                <div>
+                    <div class="eye-b">Başvuru [cite: 96]</div>
+                    <h2 class="wh">Bir adım kaldı. [cite: 97]</h2>
+                    <p class="wh">Formunu doldur, 48 saat içinde dönelim. <strong>Her başvuru değerlendirilir, her
+                            başvuru kabul edilmez.</strong> [cite: 98]</p>
+                </div>
+                <div>
+                    <form action="/basvuru" method="POST">
+                        <input class="cta-in" name="fullname" placeholder="Adınız Soyadınız" required>
+                        <input class="cta-in" name="email" placeholder="E-posta adresiniz" required>
+                        <input class="cta-in" name="phone" placeholder="Telefon (WhatsApp)" required>
+                        <input class="cta-in" name="interest" placeholder="İlgi alanı: Emlak / Hukuk / Kariyer">
+                        <button type="submit" class="cta-btn-w">Gönder →</button>
+                    </form>
+                    <div class="cta-note">Başvurunuz 48 saat içinde değerlendirilir.</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <section class="process-section">
-        <div class="container">
-            <h2>Bilgini sisteme dönüştür.</h2>
-            <div class="process-grid">
-                <div class="step-item"><span class="step-num">01</span><span class="step-text">İzle</span></div>
-                <div class="step-item"><span class="step-num">02</span><span class="step-text">Eğit</span></div>
-                <div class="step-item"><span class="step-num">03</span><span class="step-text">İlerle</span></div>
-                <div class="step-item"><span class="step-num">04</span><span class="step-text">Sisteme Dahil Ol</span>
-                </div>
-            </div>
-            <div style="margin-top: 40px;">
-                <a href="/egitimler"
-                    style="text-decoration:none; color:#000; font-weight:800; border-bottom:2px solid #000; padding-bottom:5px;">Eğitimleri
-                    İncele →</a>
+    <div class="page" id="page-egitimler">
+        <div style="padding:64px 5% 48px;border-bottom:1px solid #e8e8e8;">
+            <div class="pt-eye">Eğitimler</div>
+            <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:40px;">
+                <div class="pt-title">Dubai'de<br>Öğren, Kazan.</div>
             </div>
         </div>
-    </section>
 
-    <section class="section" id="hizmetler">
-        <div class="container">
-            <h2 style="font-size:36px; margin-bottom:48px;">Her şey bir arada.</h2>
-            <div class="grid-3">
-                {% for service in services %}
-                <div class="card">
-                    <small>{{ service.tag }}</small>
-                    <h3>{{ service.title }}</h3>
-                    <p>{{ service.desc }}</p>
-                </div>
-                {% endfor %}
+        {% for category, items in courses.items() %}
+        <div class="cat-bar">
+            <div class="cb-left">
+                <div class="cb-num">0{{ loop.index }}</div>
+                <div class="cb-title">{{ category }} Eğitimleri</div>
             </div>
         </div>
-    </section>
-
-    <section class="section audience-section">
-        <div class="container">
-            <h2 style="text-align: center; margin-bottom: 60px;">Bu platform seni bekliyor.</h2>
-            <div class="grid-3">
-                <div class="card" style="background:#fff">
-                    <small>BİRİNCİ</small>
-                    <h3>Kariyer Arayanlar</h3>
-                    <p>22-40 yaş, girişimci ruhlu, Dubai'de yüksek gelirli kariyer peşinde olanlar.</p>
-                </div>
-                <div class="card" style="background:#fff">
-                    <small>İKİNCİL</small>
-                    <h3>Sektör Profesyonelleri</h3>
-                    <p>Türkiye'de ağı olan emlakçılar, yatırım danışmanları ve hukuk profesyonelleri.</p>
-                </div>
-                <div class="card" style="background:#fff">
-                    <small>ÜÇÜNCÜL</small>
-                    <h3>Yatırımcılar</h3>
-                    <p>Dubai'ye taşınmadan şirket kurmak veya yatırım yapmak isteyenler.</p>
+        {% for course in items %}
+        <a href="#" class="card-row">
+            <div class="cr-left">
+                <div class="cr-num">{{ course.num }}</div>
+                <div class="cr-text">
+                    <div class="cr-title">{{ course.title }}</div>
+                    <div class="cr-desc">{{ course.desc }}</div>
                 </div>
             </div>
-        </div>
-    </section>
+            <div class="cr-right">
+                <div class="cr-tag">{{ course.tag }}</div>
+                <div class="cr-level">{{ course.level }}</div>
+                <div class="cr-price">{{ course.price }}</div>
+            </div>
+        </a>
+        {% endfor %}
+        {% endfor %}
+    </div>
 
-    <section class="section" id="hakkimizda">
-        <div class="container">
-            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-                <h2 style="font-size:48px; margin-bottom:32px;">Dubai'de bir sistemi biz kurduk.</h2>
-                <p style="font-size:18px;">Fact Network, Dubai kariyer, emlak ve hukuk talebini tek güvenilir marka
-                    altında toplayan, bilgiyi gelire dönüştüren eğitim platformudur.</p>
-
-                <div class="about-stats">
-                    <div class="about-stat-box"><span>2</span> ANA BİREY</div>
-                    <div class="about-stat-box"><span>4</span> GELİŞİM KATMANI</div>
-                    <div class="about-stat-box"><span>60+</span> ULUSLARARASI PARTNER</div>
+    <div class="page" id="page-hizmetler">
+        <div class="galaxy-page">
+            <div style="padding:64px 5% 48px;border-bottom:1px solid #111;">
+                <div class="g-eye">Hizmetlerimiz [cite: 32]</div>
+                <div class="g-inner">
+                    <div class="g-title">Bir ekosistem.<br><em>Sonsuz fırsat.</em> [cite: 33]</div>
+                    <p class="g-desc">Dubai'de kariyer kurmak için ihtiyacın olan tüm hizmetler tek platformda. [cite:
+                        34]</p>
                 </div>
-
-                <div
-                    style="text-align:left; background:#000; color:#fff; padding:48px; border-radius:4px; margin-top:40px;">
-                    <h3 style="color:#fff; margin-bottom:24px;">Değerlerimiz [cite: 174]</h3>
-                    <ul style="list-style:none;">
-                        <li style="margin-bottom:12px;">• Kalite standartlarından taviz vermeyiz.</li>
-                        <li style="margin-bottom:12px;">• Seçici çalışırız — her başvuruyu kabul etmeyiz.</li>
-                        <li style="margin-bottom:12px;">• UAE regülasyonlarına tam uyum sağlarız.</li>
-                        <li style="margin-bottom:12px;">• Şeffaf, ölçülebilir ve sürdürülebilir model.</li>
-                    </ul>
+            </div>
+            <div class="scene" id="scene">
+                <canvas id="starfield"></canvas>
+                <div class="nebula"></div>
+                <svg class="glines" id="glines"></svg>
+                <div class="gcenter">
+                    <div class="gcenter-txt">Fact.</div>
+                    <div class="gcenter-sub">Network</div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <section class="section apply-section" id="basvur">
-        <div class="container">
-            <div class="form-container">
-                <h2 style="text-align:center; margin-bottom:16px;">Bir adım kaldı.</h2>
-                <p style="text-align:center; margin-bottom:48px; color:var(--passive-gray);">Formunu doldur, 48 saat
-                    içinde dönelim. Her başvuru değerlendirilir, her başvuru kabul edilmez.</p>
-                <form action="/basvuru" method="POST">
-                    <input type="text" name="fullname" placeholder="Adınız Soyadınız" required>
-                    <input type="email" name="email" placeholder="E-posta Adresiniz" required>
-                    <input type="tel" name="phone" placeholder="Telefon (WhatsApp)" required>
-                    <select name="interest">
-                        <option value="Emlak">Emlak</option>
-                        <option value="Hukuk">Hukuk</option>
-                        <option value="Kariyer">Kariyer</option>
-                    </select>
-                    <button type="submit" class="btn-submit">Gönder</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <footer id="iletisim">
-        <div class="container">
-            <div class="footer-grid">
+    <div class="page" id="page-hakkimizda">
+        <div class="hero-page">
+            <div class="hp-inner">
                 <div>
-                    <h2 style="font-size: 32px; margin-bottom: 24px;">Konuşalım.<br>Dubai bekliyor.</h2>
-                    <p style="color:var(--passive-gray); margin-bottom:32px;">Başvurunuz veya herhangi bir sorunuz için
-                        doğrudan ulaşın.</p>
-                    <div style="display:flex; gap:20px;">
-                        <a href="mailto:info@factnetwork.io"
-                            style="color:#fff; font-weight:700; text-decoration:none;">E-POSTA</a>
-                        <a href="#" style="color:#fff; font-weight:700; text-decoration:none;">INSTAGRAM</a>
-                        <a href="#" style="color:#fff; font-weight:700; text-decoration:none;">LINKEDIN</a>
+                    <div class="hp-eye">Hakkımızda [cite: 63]</div>
+                    <div class="hp-title">Bir sistemi<br><em>biz kurduk.</em> [cite: 64]</div>
+                </div>
+                <p class="hp-desc">Fact Network, Dubai kariyer, emlak ve hukuk talebini tek bir güvenilir marka altında
+                    toplayan eğitim platformudur. [cite: 65]</p>
+            </div>
+        </div>
+        <div class="sec-w">
+            <div class="mission-inner">
+                <div>
+                    <div class="m-eye">Misyonumuz [cite: 167]</div>
+                    <h2 class="m-h2">Bilgiyi gelire dönüştürmek. [cite: 169]</h2>
+                    <p class="m-body">Dubai'ye yönelik kariyer, emlak ve hukuk talebini; nitelikli eğitim ve deneyimli
+                        mentorlukla buluşturuyoruz. [cite: 168]</p>
+                    <div class="m-quote">
+                        <div class="m-q-text">"Bilginizi sisteme taşıyın. Sistemi gelirinize dönüştürün." [cite: 66]
+                        </div>
+                        <div class="m-q-attr">Fact Network</div>
                     </div>
                 </div>
                 <div>
-                    <h4 style="margin-bottom:24px; text-transform:uppercase; letter-spacing:1px;">Platform</h4>
-                    <nav class="footer-links">
-                        <a href="/egitimler">Eğitimler</a>
-                        <a href="#hakkimizda">Hakkımızda</a>
-                        <a href="#bulten">Bülten</a>
-                    </nav>
+                    <div class="m-eye">Vizyon [cite: 170]</div>
+                    <h2 class="m-h2">En güvenilir referans platformu. [cite: 171]</h2>
+                    <p class="m-body">Eğitim ve iş birliği ağını tek bir çerçeve altında sürdürülebilir biçimde
+                        büyütmeyi hedefliyoruz. [cite: 172]</p>
                 </div>
-                <div>
-                    <h4 style="margin-bottom:24px; text-transform:uppercase; letter-spacing:1px;">Ofis</h4>
-                    <p style="color:var(--passive-gray);">Dubai, UAE</p>
-                    <p style="color:var(--passive-gray); margin-top:12px;">info@factnetwork.io</p>
-                </div>
-            </div>
-            <div
-                style="margin-top:80px; padding-top:40px; border-top:1px solid #333; text-align:center; color:var(--passive-gray); font-size:12px;">
-                © 2024 Fact Network. Tüm hakları saklıdır. [cite: 14]
             </div>
         </div>
-    </footer>
+        <div class="sec-w">
+            <div class="s-eye">Platform Verileri [cite: 193]</div>
+            <div class="s-grid">
+                <div class="sg">
+                    <div class="sg-n">2 [cite: 67]</div>
+                    <div class="sg-l">ANA BİREY [cite: 68]</div>
+                    <div class="sg-b">Kurumsal yapının temel taşları.</div>
+                </div>
+                <div class="sg">
+                    <div class="sg-n">4 [cite: 69]</div>
+                    <div class="sg-l">GELİŞİM KATMANI [cite: 70]</div>
+                    <div class="sg-b">Eğitimden ekosisteme uzanan yol.</div>
+                </div>
+                <div class="sg">
+                    <div class="sg-n">60 [cite: 79]</div>
+                    <div class="sg-l">AKTİF PARTNER</div>
+                    <div class="sg-b">Dubai'deki güçlü iş birliği ağı.</div>
+                </div>
+                <div class="sg">
+                    <div class="sg-n">3X [cite: 80]</div>
+                    <div class="sg-l">GELİR ARTIŞI [cite: 82]</div>
+                    <div class="sg-b">Dubai pazarının sunduğu potansiyel.</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <a href="https://wa.me/971XXXXXXXXX" class="whatsapp-float" target="_blank">WhatsApp Destek</a>
+    <div class="page" id="page-iletisim">
+        <div class="hero-page">
+            <div class="hp-inner">
+                <div>
+                    <div class="hp-eye">İletişim [cite: 104]</div>
+                    <div class="hp-title">Konuşalım.<br><em>Dubai bekliyor.</em> [cite: 105]</div>
+                </div>
+                <p class="hp-desc">Başvurunuz veya herhangi bir sorunuz için doğrudan ulaşın. [cite: 106]</p>
+            </div>
+        </div>
+        <div class="contact-main">
+            <div class="contact-left">
+                <div class="ch-row">
+                    <div class="ch-left">
+                        <div class="ch-icon"><svg viewBox="0 0 24 24">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                </path>
+                            </svg></div>
+                        <div>
+                            <div class="ch-type">E-posta</div>
+                            <div class="ch-lbl">info@factnetwork.io [cite: 117]</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ch-row">
+                    <div class="ch-left">
+                        <div class="ch-icon"><svg viewBox="0 0 24 24">
+                                <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7"></path>
+                            </svg></div>
+                        <div>
+                            <div class="ch-type">WhatsApp</div>
+                            <div class="ch-lbl">+971 XX XXX XX XX [cite: 119]</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-right">
+                <h2 class="cr-h2">Mesaj Gönder [cite: 126]</h2>
+                <form action="/basvuru" method="POST">
+                    <input class="f-in" name="fullname" placeholder="Adınız Soyadınız" required>
+                    <input class="f-in" name="email" placeholder="ornek@mail.com" required>
+                    <textarea class="f-ta" name="message" placeholder="Merhaba..."></textarea>
+                    <button type="submit" class="f-submit">Mesaj Gönder →</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dinamik Veriler
+        const svcData = {{ services | tojson }};
+
+        function showPage(n) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('show'));
+            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+            const page = document.getElementById('page-' + n);
+            if (page) page.classList.add('show');
+            const nav = document.getElementById('nav-' + n);
+            if (nav) nav.classList.add('active');
+            window.scrollTo(0, 0);
+            if (n === 'hizmetler') setTimeout(buildGalaxy, 120);
+        }
+
+        // Galaxy Animasyonu
+        const CW = 170, CH = 115;
+        function buildGalaxy() {
+            const scene = document.getElementById('scene');
+            if (!scene) return;
+            scene.querySelectorAll('.dcard').forEach(e => e.remove());
+            const W = scene.offsetWidth, H = 860;
+            const cx = W / 2, cy = H / 2;
+            const canvas = document.getElementById('starfield');
+            canvas.width = W; canvas.height = H;
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, W, H);
+
+            // Yıldızlar
+            for (let i = 0; i < 300; i++) {
+                ctx.beginPath(); ctx.arc(Math.random() * W, Math.random() * H, Math.random() * 1, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255,255,255,${Math.random() * 0.5})`; ctx.fill();
+            }
+
+            const placed = [], cardEls = [];
+            svcData.forEach((svc, i) => {
+                let lx, ly, tries = 0;
+                do {
+                    lx = 50 + Math.random() * (W - CW - 100);
+                    ly = 50 + Math.random() * (H - CH - 100);
+                    tries++;
+                } while (tries < 100 && Math.sqrt(Math.pow(lx + CW / 2 - cx, 2) + Math.pow(ly + CH / 2 - cy, 2)) < 150);
+
+                placed.push({ x: lx, y: ly });
+                const el = document.createElement('div');
+                el.className = 'dcard';
+                el.style.cssText = `left:${lx}px; top:${ly}px; opacity:${0.3 + (1 - svc.depth) * 0.7}; transform:scale(${0.7 + (1 - svc.depth) * 0.3}); animation-delay:${i * 0.1}s;`;
+                el.innerHTML = `<div class="dn">${svc.num}</div><div class="dt">${svc.title}</div><div class="ds">${svc.sub}</div><div class="dtag">${svc.tag}</div>`;
+                scene.appendChild(el);
+                cardEls.push({ px: lx + CW / 2, py: ly + CH / 2, d: svc.depth });
+            });
+
+            // Çizgiler
+            const svg = document.getElementById('glines');
+            svg.innerHTML = '';
+            cardEls.forEach(({ px, py, d }) => {
+                const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                line.setAttribute('x1', cx); line.setAttribute('y1', cy); line.setAttribute('x2', px); line.setAttribute('y2', py);
+                line.setAttribute('stroke', `rgba(255,255,255,${0.1 + (1 - d) * 0.2})`); line.setAttribute('stroke-width', '1');
+                svg.appendChild(line);
+            });
+        }
+
+        // İlk sayfa yüklemesi
+        window.onload = () => showPage('anasayfa');
+    </script>
 
 </body>
 
